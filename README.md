@@ -12,45 +12,32 @@
 ```
 [이름]/
 └── [주차]/
-    └── Main.java
+    └── SWEA1787.java
 ```
 
 **예시**
 
 ```
-안찬웅/1주차/B12865/Main.java
+안찬웅/1주차/SWEA1787.java
 ```
 
-### 문제 풀기 전 pull & 브랜치 생성
-
-항상 `main` 브랜치를 최신 상태로 만든 뒤 새 브랜치를 생성합니다. (날짜는 `YYMMDD` 6자리)
+### git
 
 ```bash
-# main 브랜치로 이동 후 최신 코드 가져오기
-git checkout main
 git pull origin main
-
-# 새 브랜치 만들기 및 이동 (백준: B, SWEA: S)
-git checkout -b 이름-날짜-문제번호
+git commit -m "20260724 SWEA1787"
+git push origin main
 ```
-
-**예시**
-
-```
-mokjak-260203-B12865
-```
-
-### 코드 완성 후 push
-
-```bash
-git add .
-git commit -m "feat: 이름 날짜 문제번호"
-git push origin 브랜치명
-```
-
 
 ### 목표
  
 1. 삼성 소프트웨어 역량테스트 A형 취득
 2. 삼성 소프트웨어 역량테스트 B형 취득
 3. 삼성 소프트웨어 역량테스트 C형 취득
+
+### 참여 방법
+
+1. 하루 1문제 올리기 (주말 포함)
+2. 매일 3회 코드리뷰
+2.1 오전 8:30 코드리뷰 (화, 목)
+2.2 시간빌 때, 1시간 코드리뷰 (월, 수, 금) 中 1회

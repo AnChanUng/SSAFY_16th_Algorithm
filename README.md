@@ -26,7 +26,7 @@
 
 ```bash
 git pull origin main
-git commit -m "20260724 SWEA1787"
+git commit -m "20260724 SWEA1787 안찬웅"
 git push origin main
 ```
 

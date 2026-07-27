@@ -16,12 +16,6 @@
     └── SWEA1767.java
 ```
 
-**예시**
-
-```
-안찬웅/week1/SWEA1767.java
-```
-
 ### git
 
 ```bash

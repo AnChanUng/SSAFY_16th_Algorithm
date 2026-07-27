@@ -16,14 +16,6 @@
     └── SWEA1767.java
 ```
 
-**예시**
-
-```
-안찬웅/week1/SWEA1767.java
-```
-
-### git
-
 ```bash
 git pull origin main
 git commit -m "20260724 안찬웅 SWEA1767"

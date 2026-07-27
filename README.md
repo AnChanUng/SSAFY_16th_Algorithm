@@ -16,6 +16,8 @@
     └── SWEA1767.java
 ```
 
+### git
+
 ```bash
 git pull origin main
 git commit -m "20260724 안찬웅 SWEA1767"

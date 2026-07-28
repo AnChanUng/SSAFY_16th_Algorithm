@@ -1,3 +1,15 @@
+/*
+전략
+- 다익스트라
+- 그래프에 적용하는 다익스트라를 그리드 상에 적용하는 문제
+- 각 셀은 상하좌우 셀과 연결되어 있고, 각각의 소요 시간을 갖는다.
+- 월요일에 승주 코드를 보며 익힌 inRange 적용해봄
+ * 
+ * 
+시행착오
+- 처음에는 visited 배열을 썼었으나, dist가 visited 배열의 역할을 대처 가능했음
+ */
+
 import java.util.*;
 import java.io.*;
 
@@ -23,7 +35,6 @@ public class SWEA1249 {
 	static int[] dx = {-1, 1, 0, 0};
 	static int[] dy = {0, 0, -1, 1};
 	static Cell[][] board;
-	static boolean[][] visited;
 	static int[][] dist; // 각 칸의 최단거리 결과값 저장
 	
 	public static void main(String[] args) throws Exception{
@@ -35,7 +46,6 @@ public class SWEA1249 {
 		for(int t = 1; t <= T; t++) {
 			int N = Integer.parseInt(br.readLine());
 			board = new Cell[N][N];
-			visited = new boolean[N][N];
 			dist = new int[N][N];
 			
 			for(int i = 0; i < N; i++) {
@@ -61,7 +71,6 @@ public class SWEA1249 {
 		
 		// 시작점 방문처리
 		pq.offer(new Cell(0, x, y));
-		visited[x][y] = true;
 		dist[x][y] = 0;
 		
 		while(!pq.isEmpty()) {
@@ -84,7 +93,6 @@ public class SWEA1249 {
 				// 후자가 작으면 후자가 더 짧은 거리이므로 방문처리
 				if(nextTime < dist[nx][ny]) {
 					pq.offer(new Cell(nextTime, nx, ny));
-					visited[nx][ny] = true;
 					dist[nx][ny] = nextTime;
 				}
 			}

@@ -1,10 +1,9 @@
-package swtb;
+package com.ssafy.swb;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.PriorityQueue;
-import java.util.StringTokenizer;
 
 class Node implements Comparable<Node>{
 	int r;
@@ -40,16 +39,18 @@ public class SWEA1249 {
 			Node v = pq.poll();
 			
 			int r = v.r, c = v.c;
+			visited[r][c] = true;
 			
 			for (int d = 0; d < 4; d++) {
 				int ar = r + dx[d]; int ac = c + dy[d];
 				if (inRange(ar, ac, dist.length) && !visited[ar][ac]) {
-					dist[ar][ac] = Math.min(dist[ar][ac], v.cost + board[ar][ac]);
-					pq.offer(new Node(ar,ac,dist[ar][ac]));
+					if (dist[ar][ac] > v.cost + board[ar][ac]) {	
+						dist[ar][ac] = v.cost + board[ar][ac];
+						pq.offer(new Node(ar,ac,dist[ar][ac]));
+					}
 				}
 			}
 			
-			visited[r][c] = true;
 			
 		}
 		return dist[dist.length - 1][dist.length - 1];
@@ -59,7 +60,7 @@ public class SWEA1249 {
 		// T 입력받고 테케별로 size, board 입력 받기
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int t = Integer.parseInt(br.readLine());
-		StringTokenizer st;
+		
 		for (int i = 1; i <= t; i++) {
 			int n = Integer.parseInt(br.readLine());
 			int[][] board = new int[n][n];

@@ -17,18 +17,18 @@ public class SWEA1251{
 	public static int[] parent;
 	public static double ans = 0.0;
 	
-	public static int[] find(double d, int depth) {
+	public static int find(double d) {
 		if (parent[(int) d] == (int) d) {
-			return new int[] {(int) d, depth};
+			return (int) d;
 		} 
-		return find(parent[(int) d], depth++);
+		return parent[(int) d] = find(parent[(int) d]);
 	}
 	
-	public static void union(int[] a, int[] b) {
-		if (a[1] < b[1]) {
-			parent[a[0]] = b[0];
+	public static void union(int a, int b) {
+		if (a < b) {
+			parent[a] = b;
 		} else {
-			parent[b[0]] = a[0];
+			parent[b] = a;
 		}
 	}
 	
@@ -73,8 +73,8 @@ public class SWEA1251{
 			int edgeCnt = 0;
 			for (double[] d : graph) {
 				if (edgeCnt == n-1) break;
-				int[] x = find(d[0],1), y = find(d[1],1);
-				if (x[0] != y[0]) {
+				int x = find(d[0]), y = find(d[1]);
+				if (x != y) {
 					union(x,y);
 					ans += d[2];
 					edgeCnt++;

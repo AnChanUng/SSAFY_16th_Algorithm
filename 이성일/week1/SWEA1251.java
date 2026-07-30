@@ -70,14 +70,14 @@ public class SWEA1251{
 			}
 			Arrays.sort(graph, (o1,o2) -> Double.compare(o1[2], o2[2]));
 			
-			int unionCnt = 1;
+			int edgeCnt = 0;
 			for (double[] d : graph) {
-				if (unionCnt == n) break;
-				int[] x = find(d[0],0), y = find(d[1],0);
+				if (edgeCnt == n-1) break;
+				int[] x = find(d[0],1), y = find(d[1],1);
 				if (x[0] != y[0]) {
 					union(x,y);
 					ans += d[2];
-					unionCnt++;
+					edgeCnt++;
 				}
 			}
 			

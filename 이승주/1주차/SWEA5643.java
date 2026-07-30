@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-//연결요소 찾는 문제이므로 dfs or bfs로 둘다 풀이가가
+//연결요소 찾는 문제이므로 dfs or bfs로 둘다 풀이가능
 
 public class SWEA5643 {
 	static int N;

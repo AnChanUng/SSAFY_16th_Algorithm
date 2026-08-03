@@ -51,7 +51,6 @@ public class SWEA5658 {
                     cnt++;
                     if(cnt == section) {
                         int x = Integer.parseInt(str, 16);
-                        //int x = translate(str); // str 16진수를 10진수로 변환
                         if(!list2.contains(x)) {
                             list2.add(x);
                         }
@@ -65,9 +64,7 @@ public class SWEA5658 {
 
                 // list1의 마지막 것을 지우고 맨 앞으로 넣기
                 list1.add(0, list1.remove(list1.size()-1));
-            }
-            //for(int i=0; i<list2.size(); i++) System.out.println(list2.get(i));
-            
+            }  
             answer = list2.get(k-1);
             sb.append("#").append(tc).append(" ").append(answer).append("\n");
         }

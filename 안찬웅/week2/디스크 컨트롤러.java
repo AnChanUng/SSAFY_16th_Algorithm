@@ -52,7 +52,8 @@ class Solution {
                 total += time - n.requestTime;
                 done++;
             } else {
-                time = jobs[idx][0];
+                time++;
+                //time = jobs[idx][0];
             }
         }
         return total / jobs.length;

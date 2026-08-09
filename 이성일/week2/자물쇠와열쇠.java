@@ -142,6 +142,6 @@ class Solution {
                     // 2-2-1 자물쇠 사이즈 안을 범위로 순회 
             // 3. 검증 실패 시, 계속해서 뉴스테이지로
                 // 3-1. 검증 성공 시, 모든 탐색 종료
-        return answer;
+        return answer; 
     }
 }

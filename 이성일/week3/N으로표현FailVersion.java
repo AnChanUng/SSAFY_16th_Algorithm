@@ -42,7 +42,8 @@ class Solution {
         list[1].add(N);
         Arrays.fill(nums, Integer.MAX_VALUE);
         nums[N] = 1;
-
+        if (N == number)
+            return 1;
         // 2. 리스트 빌드
         // 2.1 2개부터 시작, 이전 개수들의 조합으로 리스트 관리
         int len = 2;
@@ -54,6 +55,8 @@ class Solution {
                 concatNum += N * (int) (Math.pow(10, i));
             }
             list[len].add(concatNum);
+            if (concatNum == number)
+                return len;
             // 2.2 이중루프를 돌며 이전 개수 조합간의 새로운 수 생성
             // 2.2.1 더하기 빼기 곱하기 나누기 숫자 이어붙이기는 마지막에
             while (left <= right) {
@@ -65,9 +68,9 @@ class Solution {
                 right--;
             }
             if (flag) {
-                answer = nums[number];
-                break;
+                return len;
             }
+            len++;
         }
         // 2.3 새로운 수가 number이면 answer값 저장 및 종료
         return answer;

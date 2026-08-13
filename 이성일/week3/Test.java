@@ -1,14 +1,31 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Test {
     public static void main(String[] args) {
-        List<Integer>[] list = new ArrayList[2];
-        list[1].add(1);
-        list[1].add(2);
-        for (int i : list[1]) {
-            System.out.println(i);
+        List<Integer> ll = new LinkedList<>();
+        ll.add(0);
+        ll.add(1);
+        ll.add(4);
+        ll.add(5);
+        ll.get(2);
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        ll.add(2, 2);
+        ll.add(3, 3);
+        ll.add(6, 6);
+        for (int i : ll) {
+            System.out.print(i + " ");
         }
-        System.out.println();
+        String ts = "abcde";
+
+        char[] tsarr = ts.toCharArray();
+        for (char cc : tsarr) {
+
+        }
+        System.out.println(Arrays.toString(tsarr));
+
     }
 }

@@ -48,12 +48,10 @@ class Solution {
         }
     }  
     public int[] solution(String[] genres, int[] plays) {
-        int[] answer = {};
-        
         HashMap<String, Integer> sing = new HashMap<>(); // 장르별 전체재생횟수
-        HashMap<Integer, Integer> idx = new HashMap<>(); // 인덱스 재생횟수
         PriorityQueue<Node> pq = new PriorityQueue<>();
-
+        ArrayList<Integer> list = new ArrayList<>();
+        
         // 1. 장르별 전체 재생횟수를 구합니다.
         for(int i=0; i<genres.length; i++) {
             if(!sing.containsKey(genres[i])) {
@@ -72,22 +70,8 @@ class Solution {
             pq.add(new Node(singCnt, plays[i], i, genres[i]));
         }
         
-        // 2. 인덱스 재생횟수
-        for(int i=0; i<plays.length; i++) {
-            if(!idx.containsKey(i)) {
-                idx.put(i, plays[i]);
-            } else {
-                idx.put(i, idx.get(i) + plays[i]);
-            }
-        }
-        // 장르별로 2개씩 뽑기 뽑아서 리스트에 저장
-        // int genresCount; // 장르별 노래횟수
-        // int playsCount; // 노래별 횟수
-        // int idx; // 인덱스=고유번호
-        // String genres; // 장르이름
         int cnt = 0;
         String str = "";
-        ArrayList<Integer> list = new ArrayList<>();
         while(!pq.isEmpty()) {
             Node n = pq.poll();
             // 처음일때
@@ -98,14 +82,12 @@ class Solution {
                 continue;
             }
             
-            // 문자열이 같고 두번 이하일 때
+            // 문자열이 같고 한번 이하일 때
             if(str.equals(n.genres) && cnt <= 1) {
-                str = n.genres;
                 cnt++;
-                list.add(n.idx);  
-            // 문자열이 같고 세번 이상일 때
+                list.add(n.idx);
+            // 문자열이 같고 두번 이상일 때
             } else if (str.equals(n.genres) && cnt >= 2) {
-                str = n.genres;
                 cnt++;
             } else { // 문자열이 다를때
                 str = n.genres;

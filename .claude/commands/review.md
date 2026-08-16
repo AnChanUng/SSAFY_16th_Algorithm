@@ -1,0 +1,102 @@
+---
+description: 풀이 파일 하나를 리뷰해서 reviews/ 아래 마크다운으로 저장한다
+argument-hint: <풀이 파일 경로>  (예 - 안찬웅/week4/베스트앨범.java)
+allowed-tools: Bash(node scripts/resolve.mjs:*), Bash(node scripts/scan.mjs:*), Read, Write, WebFetch
+---
+
+알고리즘 스터디 풀이 코드를 리뷰하고, 결과를 정해진 경로·스키마로 저장한다.
+
+대상 파일: `$ARGUMENTS`
+
+## 순서
+
+### 1. 메타데이터 해석
+
+```
+node scripts/resolve.mjs "$ARGUMENTS"
+```
+
+JSON이 나온다. 여기서 `reviewTarget`(저장 경로), `compiles`, `url`, `title`, `authorName` 을 쓴다.
+
+**실패하면 거기서 멈추고 이유를 사용자에게 알린다.** 대부분 `data/problems.json` 의 `aliases` 에 파일명 변형이 없어서다 — 그 경우 추가할 alias 한 줄을 제안한다. 임의로 다른 경로에 저장하지 말 것.
+
+`reviewExists: true` 면 기존 리뷰를 Read 해서 보여주고, 덮어쓸지 물어본 뒤 진행한다.
+
+### 2. 코드 읽기
+
+대상 파일을 Read 한다. 주석에 전략·시행착오가 적혀 있는 경우가 많으니 같이 읽는다.
+
+### 3. 태그 목록 확인
+
+`data/review-tags.json` 을 Read 한다. 프론트매터 `tags` 는 **반드시 이 안의 `id` 값만** 쓴다. 사람별 페이지의 "반복 지적 패턴 Top 5"가 이 값을 세기 때문에, 목록에 없는 문자열을 넣으면 집계가 깨진다. 마땅한 태그가 없으면 새로 지어내지 말고 가장 가까운 것을 고르고, 본문에서 설명한다.
+
+### 4. 필요할 때만 문제 페이지 확인
+
+입력 제약(N의 범위 등)이 코드와 주석만으로 판단이 안 되고, 그게 시간복잡도 지적에 필요할 때만 `url` 을 WebFetch 한다. **문제 지문은 저장하지 않는다** (claude.md 비목표 3항).
+
+### 5. 리뷰 작성
+
+`reviewTarget` 경로에 아래 스키마로 Write 한다.
+
+````markdown
+---
+platform: <platform>
+problemId: "<problemId>"
+author: <author>
+source: <source>
+week: <week>
+compiles: <true|false>
+verdict: <good|needs-fix|wrong>
+tags: [<review-tags.json 의 id 들>]
+complexity:
+  time: O(...)
+  space: O(...)
+generatedBy: claude-code-local
+generatedAt: <YYYY-MM-DD>
+---
+
+# <title> (<platform>/<problemId>) — <author>
+
+## 접근
+
+이 코드가 실제로 취한 전략을 2~4문장으로. 잘한 판단이 있으면 여기서 짚는다.
+칭찬은 구체적으로 — "좋습니다" 말고 "정렬 기준 3개를 compareTo 하나에 몰아넣어서 문제 조건이 코드에 그대로 드러난다".
+
+## 개선점
+
+심각한 것부터. 각 항목은 `### N. (심각도) 요약 — <태그>` 형식.
+심각도는 `치명`(오답), `중요`(성능·구조), `사소`(가독성) 중 하나.
+
+- **오답 지적은 반드시 반례를 든다.** 입력값과 기대 출력, 실제 출력을 적는다.
+  가능하면 실제로 컴파일해서 돌려보고 확인한 결과를 쓴다. 확인 못 했으면 "확인 못 함"이라고 명시한다.
+- 개선안은 코드로 보여준다. 전체 재작성 말고 바뀌는 부분만.
+- 문제 조건을 근거로 든다. "더 좋다"가 아니라 "N이 10^5까지라 O(N^2)는 안 된다".
+
+## 복잡도
+
+- 시간: `O(...)` — 무엇이 지배적인지 한 줄
+- 공간: `O(...)` — 한 줄
+
+## 요약
+
+2~3문장. 뼈대가 괜찮은지, 핵심 문제가 뭔지.
+````
+
+### 6. 마무리
+
+저장 후 사용자에게 알린다:
+- 저장 경로
+- `verdict` 와 붙인 태그
+- 커밋 안내: `git add reviews && git commit -m "review: <title> <author>"`
+
+## 원칙
+
+- **코드에 있는 것만 지적한다.** 없는 함수, 안 쓴 라이브러리를 지어내지 않는다.
+- **컴파일 실패해도 리뷰한다.** `compiles: false` 로 남기고, 컴파일 오류 자체를 첫 번째 개선점으로 올린다.
+- **미제출 스텁은 리뷰하지 않는다.** 본문이 `System.out.println("모르겠습니다")` 같은 포기 선언이거나,
+  주석만 있고 알고리즘이 없으면 — 억지로 리뷰를 만들지 말고 `verdict: unattempted`,
+  `tags: []` 로 두세 줄만 남긴다: 어떤 접근까지 갔는지, 다음에 뭘 보고 오면 될지(자료구조/알고리즘 이름).
+  없는 코드를 지적하는 리뷰는 사람별 통계만 오염시킨다.
+- **`실패`/`잘못된 풀이` 파일(variant)** 은 왜 틀렸는지를 중심으로 리뷰한다. 대표 풀이와 뭐가 다른지 짚으면 좋다.
+- 지적할 게 정말 없으면 억지로 만들지 않는다. `verdict: good` 에 칭찬 태그만 달고 짧게 끝낸다.
+- 한국어로 쓴다. 코드·식별자·복잡도 표기는 원문 그대로.

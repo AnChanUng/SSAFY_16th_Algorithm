@@ -1,0 +1,45 @@
+{
+  "_comment": "T0-3. 팀 확인 필요. verified=false 인 항목은 제가 추측한 값이니 반드시 본인 확인 후 true로 바꿔주세요.",
+  "authors": [
+    {
+      "id": "junsoo",
+      "displayName": "김준수",
+      "folders": ["김준수"],
+      "gitIdentities": ["Junsoo Kim <kjsoo1901@gmail.com>", "Junsoo-Kim <kjsoo1901@gmail.com>"],
+      "verified": false
+    },
+    {
+      "id": "chanung",
+      "displayName": "안찬웅",
+      "folders": ["안찬웅"],
+      "gitIdentities": [
+        "anchanung <1stevering@naver.com>",
+        "안찬웅 <1stevering@naver.com>",
+        "Chanung An <104750924+AnChanUng@users.noreply.github.com>"
+      ],
+      "verified": false
+    },
+    {
+      "id": "seongil",
+      "displayName": "이성일",
+      "folders": ["이성일"],
+      "gitIdentities": [
+        "LeeSeongIl <lsimma7@naver.com>",
+        "Sirius147 <lsimma7@naver.com>",
+        "sirius <91835961+Sirius147@users.noreply.github.com>"
+      ],
+      "verified": false
+    },
+    {
+      "id": "seungjoo",
+      "displayName": "이승주",
+      "folders": ["이승주"],
+      "gitIdentities": [
+        "LeeSeungJoo <eun07213@gmail.com>",
+        "이승주 <eun07213@gmail.com>",
+        "이승주 <139853497+Leeseung-joo@users.noreply.github.com>"
+      ],
+      "verified": false
+    }
+  ]
+}

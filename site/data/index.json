@@ -1,0 +1,1448 @@
+{
+  "generatedAt": "2026-08-16T07:33:10.225Z",
+  "authors": [
+    {
+      "id": "junsoo",
+      "displayName": "김준수",
+      "verified": false
+    },
+    {
+      "id": "chanung",
+      "displayName": "안찬웅",
+      "verified": false
+    },
+    {
+      "id": "seongil",
+      "displayName": "이성일",
+      "verified": false
+    },
+    {
+      "id": "seungjoo",
+      "displayName": "이승주",
+      "verified": false
+    }
+  ],
+  "problems": [
+    {
+      "key": "programmers/12904",
+      "platform": "programmers",
+      "problemId": "12904",
+      "title": "가장 긴 팰린드롬",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12904",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 3,
+          "variant": null,
+          "source": "안찬웅/week3/가장 긴 팰린드롬.java",
+          "target": "solutions/programmers/12904/chanung.java",
+          "review": "reviews/programmers/12904/chanung.md",
+          "hasReview": false,
+          "lines": 44,
+          "bytes": 1160
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 3,
+          "variant": null,
+          "source": "이승주/week3/가장 긴 펠린드롬 길이.java",
+          "target": "solutions/programmers/12904/seungjoo.java",
+          "review": "reviews/programmers/12904/seungjoo.md",
+          "hasReview": false,
+          "lines": 54,
+          "bytes": 1330
+        }
+      ]
+    },
+    {
+      "key": "programmers/17678",
+      "platform": "programmers",
+      "problemId": "17678",
+      "title": "[1차] 셔틀버스",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/17678",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": null,
+          "source": "김준수/week3/셔틀버스.java",
+          "target": "solutions/programmers/17678/junsoo.java",
+          "review": "reviews/programmers/17678/junsoo.md",
+          "hasReview": false,
+          "lines": 67,
+          "bytes": 2444
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 3,
+          "variant": null,
+          "source": "안찬웅/week3/셔틀버스.java",
+          "target": "solutions/programmers/17678/chanung.java",
+          "review": "reviews/programmers/17678/chanung.md",
+          "hasReview": false,
+          "lines": 66,
+          "bytes": 1968
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": null,
+          "source": "이성일/week3/셔틀버스.java",
+          "target": "solutions/programmers/17678/seongil.java",
+          "review": "reviews/programmers/17678/seongil.md",
+          "hasReview": false,
+          "lines": 106,
+          "bytes": 3740
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 3,
+          "variant": null,
+          "source": "이승주/week3/셔틀버스.java",
+          "target": "solutions/programmers/17678/seungjoo.java",
+          "review": "reviews/programmers/17678/seungjoo.md",
+          "hasReview": false,
+          "lines": 60,
+          "bytes": 1371
+        }
+      ]
+    },
+    {
+      "key": "programmers/42579",
+      "platform": "programmers",
+      "problemId": "42579",
+      "title": "베스트앨범",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42579",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 4,
+          "variant": null,
+          "source": "안찬웅/week4/베스트앨범.java",
+          "target": "solutions/programmers/42579/chanung.java",
+          "review": "reviews/programmers/42579/chanung.md",
+          "hasReview": true,
+          "lines": 107,
+          "bytes": 3722
+        }
+      ]
+    },
+    {
+      "key": "programmers/42627",
+      "platform": "programmers",
+      "problemId": "42627",
+      "title": "디스크 컨트롤러",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42627",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/디스크 컨트롤러.java",
+          "target": "solutions/programmers/42627/junsoo.java",
+          "review": "reviews/programmers/42627/junsoo.md",
+          "hasReview": false,
+          "lines": 103,
+          "bytes": 3023
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/디스크 컨트롤러.java",
+          "target": "solutions/programmers/42627/chanung.java",
+          "review": "reviews/programmers/42627/chanung.md",
+          "hasReview": false,
+          "lines": 62,
+          "bytes": 2166
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/디스크컨트롤러.java",
+          "target": "solutions/programmers/42627/seongil.java",
+          "review": "reviews/programmers/42627/seongil.md",
+          "hasReview": false,
+          "lines": 50,
+          "bytes": 1458
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/우선순위 컨트롤러.java",
+          "target": "solutions/programmers/42627/seungjoo.java",
+          "review": "reviews/programmers/42627/seungjoo.md",
+          "hasReview": false,
+          "lines": 33,
+          "bytes": 1057
+        }
+      ]
+    },
+    {
+      "key": "programmers/42861",
+      "platform": "programmers",
+      "problemId": "42861",
+      "title": "섬 연결하기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42861",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 4,
+          "variant": null,
+          "source": "김준수/week4/섬 연결하기.java",
+          "target": "solutions/programmers/42861/junsoo.java",
+          "review": "reviews/programmers/42861/junsoo.md",
+          "hasReview": false,
+          "lines": 79,
+          "bytes": 2022
+        }
+      ]
+    },
+    {
+      "key": "programmers/42884",
+      "platform": "programmers",
+      "problemId": "42884",
+      "title": "단속카메라",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42884",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": null,
+          "source": "이성일/week3/연습/단속카메라.java",
+          "target": "solutions/programmers/42884/seongil.java",
+          "review": "reviews/programmers/42884/seongil.md",
+          "hasReview": false,
+          "lines": 31,
+          "bytes": 1168
+        }
+      ]
+    },
+    {
+      "key": "programmers/42892",
+      "platform": "programmers",
+      "problemId": "42892",
+      "title": "길 찾기 게임",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42892",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": null,
+          "source": "김준수/week3/길 찾기 게임.java",
+          "target": "solutions/programmers/42892/junsoo.java",
+          "review": "reviews/programmers/42892/junsoo.md",
+          "hasReview": false,
+          "lines": 146,
+          "bytes": 4711
+        }
+      ]
+    },
+    {
+      "key": "programmers/42895",
+      "platform": "programmers",
+      "problemId": "42895",
+      "title": "N으로 표현",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42895",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": null,
+          "source": "김준수/week3/N으로 표현.java",
+          "target": "solutions/programmers/42895/junsoo.java",
+          "review": "reviews/programmers/42895/junsoo.md",
+          "hasReview": false,
+          "lines": 74,
+          "bytes": 3020
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 3,
+          "variant": null,
+          "source": "안찬웅/week3/N으로 표현.java",
+          "target": "solutions/programmers/42895/chanung.java",
+          "review": "reviews/programmers/42895/chanung.md",
+          "hasReview": false,
+          "lines": 42,
+          "bytes": 1188
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": null,
+          "source": "이성일/week3/N으로표현.java",
+          "target": "solutions/programmers/42895/seongil.java",
+          "review": "reviews/programmers/42895/seongil.md",
+          "hasReview": false,
+          "lines": 55,
+          "bytes": 1467
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": "failed",
+          "source": "이성일/week3/N으로표현FailVersion.java",
+          "target": "solutions/programmers/42895/seongil.failed.java",
+          "review": "reviews/programmers/42895/seongil.failed.md",
+          "hasReview": false,
+          "lines": 79,
+          "bytes": 2650
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 3,
+          "variant": null,
+          "source": "이승주/week3/N으로 표현.java",
+          "target": "solutions/programmers/42895/seungjoo.java",
+          "review": "reviews/programmers/42895/seungjoo.md",
+          "hasReview": false,
+          "lines": 46,
+          "bytes": 888
+        }
+      ]
+    },
+    {
+      "key": "programmers/43164",
+      "platform": "programmers",
+      "problemId": "43164",
+      "title": "여행경로",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43164",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 4,
+          "variant": null,
+          "source": "김준수/week4/여행 경로.java",
+          "target": "solutions/programmers/43164/junsoo.java",
+          "review": "reviews/programmers/43164/junsoo.md",
+          "hasReview": false,
+          "lines": 92,
+          "bytes": 3138
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 4,
+          "variant": null,
+          "source": "안찬웅/week4/여행경로.java",
+          "target": "solutions/programmers/43164/chanung.java",
+          "review": "reviews/programmers/43164/chanung.md",
+          "hasReview": false,
+          "lines": 43,
+          "bytes": 1250
+        }
+      ]
+    },
+    {
+      "key": "programmers/43238",
+      "platform": "programmers",
+      "problemId": "43238",
+      "title": "입국심사",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43238",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/입국심사.java",
+          "target": "solutions/programmers/43238/junsoo.java",
+          "review": "reviews/programmers/43238/junsoo.md",
+          "hasReview": false,
+          "lines": 65,
+          "bytes": 2303
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/입국심사.java",
+          "target": "solutions/programmers/43238/chanung.java",
+          "review": "reviews/programmers/43238/chanung.md",
+          "hasReview": false,
+          "lines": 31,
+          "bytes": 675
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/입국심사.java",
+          "target": "solutions/programmers/43238/seongil.java",
+          "review": "reviews/programmers/43238/seongil.md",
+          "hasReview": false,
+          "lines": 53,
+          "bytes": 2156
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/입국심사.java",
+          "target": "solutions/programmers/43238/seungjoo.java",
+          "review": "reviews/programmers/43238/seungjoo.md",
+          "hasReview": false,
+          "lines": 36,
+          "bytes": 740
+        }
+      ]
+    },
+    {
+      "key": "programmers/49189",
+      "platform": "programmers",
+      "problemId": "49189",
+      "title": "가장 먼 노드",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/49189",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 4,
+          "variant": null,
+          "source": "김준수/week4/가장 먼 노드.java",
+          "target": "solutions/programmers/49189/junsoo.java",
+          "review": "reviews/programmers/49189/junsoo.md",
+          "hasReview": false,
+          "lines": 58,
+          "bytes": 1618
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 4,
+          "variant": null,
+          "source": "안찬웅/week4/가장 먼 노드.java",
+          "target": "solutions/programmers/49189/chanung.java",
+          "review": "reviews/programmers/49189/chanung.md",
+          "hasReview": false,
+          "lines": 58,
+          "bytes": 1576
+        }
+      ]
+    },
+    {
+      "key": "programmers/49191",
+      "platform": "programmers",
+      "problemId": "49191",
+      "title": "순위",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/49191",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/순위.java",
+          "target": "solutions/programmers/49191/junsoo.java",
+          "review": "reviews/programmers/49191/junsoo.md",
+          "hasReview": false,
+          "lines": 88,
+          "bytes": 2487
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/순위.java",
+          "target": "solutions/programmers/49191/chanung.java",
+          "review": "reviews/programmers/49191/chanung.md",
+          "hasReview": false,
+          "lines": 63,
+          "bytes": 1684
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/순위.java",
+          "target": "solutions/programmers/49191/seongil.java",
+          "review": "reviews/programmers/49191/seongil.md",
+          "hasReview": false,
+          "lines": 83,
+          "bytes": 2573
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/순위.java",
+          "target": "solutions/programmers/49191/seungjoo.java",
+          "review": "reviews/programmers/49191/seungjoo.md",
+          "hasReview": false,
+          "lines": 66,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "key": "programmers/60059",
+      "platform": "programmers",
+      "problemId": "60059",
+      "title": "자물쇠와 열쇠",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/60059",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/자물쇠와 열쇠.java",
+          "target": "solutions/programmers/60059/junsoo.java",
+          "review": "reviews/programmers/60059/junsoo.md",
+          "hasReview": false,
+          "lines": 90,
+          "bytes": 3330
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/자물쇠와 열쇠.java",
+          "target": "solutions/programmers/60059/chanung.java",
+          "review": "reviews/programmers/60059/chanung.md",
+          "hasReview": false,
+          "lines": 98,
+          "bytes": 3398
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/자물쇠와열쇠.java",
+          "target": "solutions/programmers/60059/seongil.java",
+          "review": "reviews/programmers/60059/seongil.md",
+          "hasReview": false,
+          "lines": 147,
+          "bytes": 5047
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/자물쇠와 열쇠.java",
+          "target": "solutions/programmers/60059/seungjoo.java",
+          "review": "reviews/programmers/60059/seungjoo.md",
+          "hasReview": false,
+          "lines": 128,
+          "bytes": 3797
+        }
+      ]
+    },
+    {
+      "key": "programmers/64062",
+      "platform": "programmers",
+      "problemId": "64062",
+      "title": "징검다리 건너기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/64062",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 4,
+          "variant": "failed",
+          "source": "김준수/week4/징검다리 건너기 실패.java",
+          "target": "solutions/programmers/64062/junsoo.failed.java",
+          "review": "reviews/programmers/64062/junsoo.failed.md",
+          "hasReview": false,
+          "lines": 88,
+          "bytes": 3231
+        },
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 4,
+          "variant": null,
+          "source": "김준수/week4/징검다리 건너기.java",
+          "target": "solutions/programmers/64062/junsoo.java",
+          "review": "reviews/programmers/64062/junsoo.md",
+          "hasReview": false,
+          "lines": 85,
+          "bytes": 2934
+        }
+      ]
+    },
+    {
+      "key": "programmers/67259",
+      "platform": "programmers",
+      "problemId": "67259",
+      "title": "경주로 건설",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/67259",
+      "verified": true,
+      "weeks": [
+        2,
+        3
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": null,
+          "source": "김준수/week3/경주로 건설.java",
+          "target": "solutions/programmers/67259/junsoo.java",
+          "review": "reviews/programmers/67259/junsoo.md",
+          "hasReview": false,
+          "lines": 103,
+          "bytes": 3482
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 3,
+          "variant": null,
+          "source": "안찬웅/week3/경주로 건설.java",
+          "target": "solutions/programmers/67259/chanung.java",
+          "review": "reviews/programmers/67259/chanung.md",
+          "hasReview": false,
+          "lines": 84,
+          "bytes": 2444
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/월경주로건설.java",
+          "target": "solutions/programmers/67259/seongil.java",
+          "review": "reviews/programmers/67259/seongil.md",
+          "hasReview": false,
+          "lines": 75,
+          "bytes": 2304
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 3,
+          "variant": "failed",
+          "source": "이승주/week3/경주로 건설 잘못된 풀이.java",
+          "target": "solutions/programmers/67259/seungjoo.failed.java",
+          "review": "reviews/programmers/67259/seungjoo.failed.md",
+          "hasReview": false,
+          "lines": 65,
+          "bytes": 2245
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 3,
+          "variant": null,
+          "source": "이승주/week3/경주로 건설.java",
+          "target": "solutions/programmers/67259/seungjoo.java",
+          "review": "reviews/programmers/67259/seungjoo.md",
+          "hasReview": false,
+          "lines": 65,
+          "bytes": 1855
+        }
+      ]
+    },
+    {
+      "key": "programmers/72413",
+      "platform": "programmers",
+      "problemId": "72413",
+      "title": "합승 택시 요금",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/72413",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/합승 택시 요금.java",
+          "target": "solutions/programmers/72413/junsoo.java",
+          "review": "reviews/programmers/72413/junsoo.md",
+          "hasReview": false,
+          "lines": 97,
+          "bytes": 3276
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/합승 택시 요금.java",
+          "target": "solutions/programmers/72413/chanung.java",
+          "review": "reviews/programmers/72413/chanung.md",
+          "hasReview": false,
+          "lines": 92,
+          "bytes": 2888
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/합승택시요금.java",
+          "target": "solutions/programmers/72413/seongil.java",
+          "review": "reviews/programmers/72413/seongil.md",
+          "hasReview": false,
+          "lines": 67,
+          "bytes": 2381
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/합동택시요금.java",
+          "target": "solutions/programmers/72413/seungjoo.java",
+          "review": "reviews/programmers/72413/seungjoo.md",
+          "hasReview": false,
+          "lines": 70,
+          "bytes": 1972
+        }
+      ]
+    },
+    {
+      "key": "programmers/77486",
+      "platform": "programmers",
+      "problemId": "77486",
+      "title": "다단계 칫솔 판매",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/77486",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/다단계 칫솔 판매.java",
+          "target": "solutions/programmers/77486/junsoo.java",
+          "review": "reviews/programmers/77486/junsoo.md",
+          "hasReview": false,
+          "lines": 92,
+          "bytes": 3128
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/다단계 칫솔 판매.java",
+          "target": "solutions/programmers/77486/chanung.java",
+          "review": "reviews/programmers/77486/chanung.md",
+          "hasReview": true,
+          "lines": 76,
+          "bytes": 2965
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/다단계칫솔판매.java",
+          "target": "solutions/programmers/77486/seongil.java",
+          "review": "reviews/programmers/77486/seongil.md",
+          "hasReview": false,
+          "lines": 51,
+          "bytes": 1723
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/다단계 칫솔 판매.java",
+          "target": "solutions/programmers/77486/seungjoo.java",
+          "review": "reviews/programmers/77486/seungjoo.md",
+          "hasReview": false,
+          "lines": 64,
+          "bytes": 1841
+        }
+      ]
+    },
+    {
+      "key": "programmers/81303",
+      "platform": "programmers",
+      "problemId": "81303",
+      "title": "표 편집",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/81303",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": "failed",
+          "source": "김준수/week3/표 편집 실패.java",
+          "target": "solutions/programmers/81303/junsoo.failed.java",
+          "review": "reviews/programmers/81303/junsoo.failed.md",
+          "hasReview": false,
+          "lines": 80,
+          "bytes": 2144
+        },
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": null,
+          "source": "김준수/week3/표 편집.java",
+          "target": "solutions/programmers/81303/junsoo.java",
+          "review": "reviews/programmers/81303/junsoo.md",
+          "hasReview": false,
+          "lines": 115,
+          "bytes": 4157
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 3,
+          "variant": null,
+          "source": "안찬웅/week3/표 편집",
+          "target": "solutions/programmers/81303/chanung.java",
+          "review": "reviews/programmers/81303/chanung.md",
+          "hasReview": false,
+          "lines": 75,
+          "bytes": 2796
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": null,
+          "source": "이성일/week3/표편집.java",
+          "target": "solutions/programmers/81303/seongil.java",
+          "review": "reviews/programmers/81303/seongil.md",
+          "hasReview": false,
+          "lines": 60,
+          "bytes": 1505
+        }
+      ]
+    },
+    {
+      "key": "programmers/87694",
+      "platform": "programmers",
+      "problemId": "87694",
+      "title": "아이템 줍기",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/87694",
+      "verified": true,
+      "weeks": [
+        2
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 2,
+          "variant": null,
+          "source": "김준수/week2/아이템 줍기.java",
+          "target": "solutions/programmers/87694/junsoo.java",
+          "review": "reviews/programmers/87694/junsoo.md",
+          "hasReview": false,
+          "lines": 91,
+          "bytes": 3331
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 2,
+          "variant": null,
+          "source": "안찬웅/week2/아이템줍기.java",
+          "target": "solutions/programmers/87694/chanung.java",
+          "review": "reviews/programmers/87694/chanung.md",
+          "hasReview": false,
+          "lines": 18,
+          "bytes": 585
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 2,
+          "variant": null,
+          "source": "이성일/week2/아이템줍기.java",
+          "target": "solutions/programmers/87694/seongil.java",
+          "review": "reviews/programmers/87694/seongil.md",
+          "hasReview": false,
+          "lines": 84,
+          "bytes": 3146
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 2,
+          "variant": null,
+          "source": "이승주/week2/아이템 줍기.java",
+          "target": "solutions/programmers/87694/seungjoo.java",
+          "review": "reviews/programmers/87694/seungjoo.md",
+          "hasReview": false,
+          "lines": 89,
+          "bytes": 2231
+        }
+      ]
+    },
+    {
+      "key": "programmers/92343",
+      "platform": "programmers",
+      "problemId": "92343",
+      "title": "양과 늑대",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/92343",
+      "verified": true,
+      "weeks": [
+        3
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 3,
+          "variant": null,
+          "source": "김준수/week3/양과 늑대.java",
+          "target": "solutions/programmers/92343/junsoo.java",
+          "review": "reviews/programmers/92343/junsoo.md",
+          "hasReview": false,
+          "lines": 102,
+          "bytes": 3600
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 3,
+          "variant": null,
+          "source": "안찬웅/week3/양과 늑대.java",
+          "target": "solutions/programmers/92343/chanung.java",
+          "review": "reviews/programmers/92343/chanung.md",
+          "hasReview": false,
+          "lines": 79,
+          "bytes": 2565
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": null,
+          "source": "이성일/week3/양과늑대.java",
+          "target": "solutions/programmers/92343/seongil.java",
+          "review": "reviews/programmers/92343/seongil.md",
+          "hasReview": false,
+          "lines": 74,
+          "bytes": 2781
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": "alt",
+          "source": "이성일/week3/양과늑대2.java",
+          "target": "solutions/programmers/92343/seongil.alt.java",
+          "review": "reviews/programmers/92343/seongil.alt.md",
+          "hasReview": false,
+          "lines": 44,
+          "bytes": 1234
+        }
+      ]
+    },
+    {
+      "key": "swea/1249",
+      "platform": "swea",
+      "problemId": "1249",
+      "title": "보급로",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA1249.java",
+          "target": "solutions/swea/1249/junsoo.java",
+          "review": "reviews/swea/1249/junsoo.md",
+          "hasReview": false,
+          "lines": 107,
+          "bytes": 2868
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 1,
+          "variant": null,
+          "source": "안찬웅/week1/SWEA1249.java",
+          "target": "solutions/swea/1249/chanung.java",
+          "review": "reviews/swea/1249/chanung.md",
+          "hasReview": false,
+          "lines": 73,
+          "bytes": 2434
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 1,
+          "variant": null,
+          "source": "이성일/week1/SWEA1249.java",
+          "target": "solutions/swea/1249/seongil.java",
+          "review": "reviews/swea/1249/seongil.md",
+          "hasReview": false,
+          "lines": 97,
+          "bytes": 2535
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA1249.java",
+          "target": "solutions/swea/1249/seungjoo.java",
+          "review": "reviews/swea/1249/seungjoo.md",
+          "hasReview": false,
+          "lines": 111,
+          "bytes": 2397
+        }
+      ]
+    },
+    {
+      "key": "swea/1251",
+      "platform": "swea",
+      "problemId": "1251",
+      "title": "하나로",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA1251.java",
+          "target": "solutions/swea/1251/junsoo.java",
+          "review": "reviews/swea/1251/junsoo.md",
+          "hasReview": false,
+          "lines": 143,
+          "bytes": 4125
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 1,
+          "variant": null,
+          "source": "안찬웅/week1/SWEA1251.java",
+          "target": "solutions/swea/1251/chanung.java",
+          "review": "reviews/swea/1251/chanung.md",
+          "hasReview": false,
+          "lines": 90,
+          "bytes": 3028
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 1,
+          "variant": null,
+          "source": "이성일/week1/SWEA1251.java",
+          "target": "solutions/swea/1251/seongil.java",
+          "review": "reviews/swea/1251/seongil.md",
+          "hasReview": false,
+          "lines": 95,
+          "bytes": 2574
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA1251.java",
+          "target": "solutions/swea/1251/seungjoo.java",
+          "review": "reviews/swea/1251/seungjoo.md",
+          "hasReview": false,
+          "lines": 146,
+          "bytes": 3446
+        }
+      ]
+    },
+    {
+      "key": "swea/1767",
+      "platform": "swea",
+      "problemId": "1767",
+      "title": "프로세서 연결하기",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA1767.java",
+          "target": "solutions/swea/1767/junsoo.java",
+          "review": "reviews/swea/1767/junsoo.md",
+          "hasReview": false,
+          "lines": 170,
+          "bytes": 6122
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 1,
+          "variant": null,
+          "source": "안찬웅/week1/SWEA1767.java",
+          "target": "solutions/swea/1767/chanung.java",
+          "review": "reviews/swea/1767/chanung.md",
+          "hasReview": false,
+          "lines": 127,
+          "bytes": 3272
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 1,
+          "variant": null,
+          "source": "이성일/week1/SWEA1767.java",
+          "target": "solutions/swea/1767/seongil.java",
+          "review": "reviews/swea/1767/seongil.md",
+          "hasReview": false,
+          "lines": 133,
+          "bytes": 3999
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA1767.java",
+          "target": "solutions/swea/1767/seungjoo.java",
+          "review": "reviews/swea/1767/seungjoo.md",
+          "hasReview": false,
+          "lines": 141,
+          "bytes": 2921
+        }
+      ]
+    },
+    {
+      "key": "swea/5643",
+      "platform": "swea",
+      "problemId": "5643",
+      "title": "키 순서",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA5643.java",
+          "target": "solutions/swea/5643/junsoo.java",
+          "review": "reviews/swea/5643/junsoo.md",
+          "hasReview": false,
+          "lines": 92,
+          "bytes": 2412
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 1,
+          "variant": null,
+          "source": "안찬웅/week1/SWEA5643.java",
+          "target": "solutions/swea/5643/chanung.java",
+          "review": "reviews/swea/5643/chanung.md",
+          "hasReview": false,
+          "lines": 73,
+          "bytes": 2274
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 1,
+          "variant": null,
+          "source": "이성일/week1/SWEA5643.java",
+          "target": "solutions/swea/5643/seongil.java",
+          "review": "reviews/swea/5643/seongil.md",
+          "hasReview": false,
+          "lines": 75,
+          "bytes": 1998
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA5643.java",
+          "target": "solutions/swea/5643/seungjoo.java",
+          "review": "reviews/swea/5643/seungjoo.md",
+          "hasReview": false,
+          "lines": 87,
+          "bytes": 2001
+        }
+      ]
+    },
+    {
+      "key": "swea/5653",
+      "platform": "swea",
+      "problemId": "5653",
+      "title": "줄기세포배양",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA5653.java",
+          "target": "solutions/swea/5653/junsoo.java",
+          "review": "reviews/swea/5653/junsoo.md",
+          "hasReview": false,
+          "lines": 169,
+          "bytes": 4288
+        }
+      ]
+    },
+    {
+      "key": "swea/5656",
+      "platform": "swea",
+      "problemId": "5656",
+      "title": "벽돌 깨기",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA5656.java",
+          "target": "solutions/swea/5656/junsoo.java",
+          "review": "reviews/swea/5656/junsoo.md",
+          "hasReview": false,
+          "lines": 186,
+          "bytes": 5078
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA5656.java",
+          "target": "solutions/swea/5656/seungjoo.java",
+          "review": "reviews/swea/5656/seungjoo.md",
+          "hasReview": false,
+          "lines": 172,
+          "bytes": 3615
+        }
+      ]
+    },
+    {
+      "key": "swea/5658",
+      "platform": "swea",
+      "problemId": "5658",
+      "title": "보물상자 비밀번호",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA5658.java",
+          "target": "solutions/swea/5658/junsoo.java",
+          "review": "reviews/swea/5658/junsoo.md",
+          "hasReview": false,
+          "lines": 68,
+          "bytes": 2496
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 1,
+          "variant": null,
+          "source": "안찬웅/week1/SWEA5658.java",
+          "target": "solutions/swea/5658/chanung.java",
+          "review": "reviews/swea/5658/chanung.md",
+          "hasReview": false,
+          "lines": 74,
+          "bytes": 2550
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA5658.java",
+          "target": "solutions/swea/5658/seungjoo.java",
+          "review": "reviews/swea/5658/seungjoo.md",
+          "hasReview": false,
+          "lines": 65,
+          "bytes": 1385
+        }
+      ]
+    },
+    {
+      "key": "swea/14510",
+      "platform": "swea",
+      "problemId": "14510",
+      "title": "나무 높이",
+      "url": null,
+      "verified": true,
+      "weeks": [
+        1
+      ],
+      "entries": [
+        {
+          "author": "junsoo",
+          "authorName": "김준수",
+          "week": 1,
+          "variant": null,
+          "source": "김준수/week1/SWEA14510.java",
+          "target": "solutions/swea/14510/junsoo.java",
+          "review": "reviews/swea/14510/junsoo.md",
+          "hasReview": false,
+          "lines": 80,
+          "bytes": 3162
+        },
+        {
+          "author": "chanung",
+          "authorName": "안찬웅",
+          "week": 1,
+          "variant": null,
+          "source": "안찬웅/week1/SWEA14510.java",
+          "target": "solutions/swea/14510/chanung.java",
+          "review": "reviews/swea/14510/chanung.md",
+          "hasReview": false,
+          "lines": 94,
+          "bytes": 2693
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 1,
+          "variant": null,
+          "source": "이성일/week1/SWEA14510.java",
+          "target": "solutions/swea/14510/seongil.java",
+          "review": "reviews/swea/14510/seongil.md",
+          "hasReview": false,
+          "lines": 53,
+          "bytes": 1367
+        },
+        {
+          "author": "seungjoo",
+          "authorName": "이승주",
+          "week": 1,
+          "variant": null,
+          "source": "이승주/1주차/SWEA14510.java",
+          "target": "solutions/swea/14510/seungjoo.java",
+          "review": "reviews/swea/14510/seungjoo.md",
+          "hasReview": false,
+          "lines": 66,
+          "bytes": 1589
+        }
+      ]
+    }
+  ]
+}

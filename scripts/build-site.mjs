@@ -61,6 +61,14 @@ for (const s of solutions) {
   });
 }
 
+// T3-4. 발표 후 팀 피드백. 문제 단위이므로 개별 리뷰와 달리 문제당 한 개.
+for (const p of problems.values()) {
+  const fb = path.join(ROOT, `reviews/${p.platform}/${p.problemId}/team-feedback.md`);
+  p.teamFeedback = fs.existsSync(fb)
+    ? fs.readFileSync(fb, 'utf8').replace(/\r\n/g, '\n').replace(/^---\n[\s\S]*?\n---\n?/, '').trim()
+    : null;
+}
+
 const list = [...problems.values()]
   .map((p) => ({ ...p, weeks: [...p.weeks].sort((a, b) => a - b) }))
   .sort((a, b) => a.platform.localeCompare(b.platform) || Number(a.problemId) - Number(b.problemId));

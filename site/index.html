@@ -104,6 +104,9 @@ details.rev[open] > summary::before { content: "▾"; }
   padding: 1px 5px; border-radius: 4px; font-family: var(--mono); font-size: 12.5px; }
 .rev-body pre.code code { background: none; border: 0; padding: 0; }
 .rev-body ul { padding-left: 20px; } .rev-body li { margin: 4px 0; }
+details.rev.fb, .norev.fb { background: var(--panel); border: 1px solid var(--line);
+  border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
+.norev.fb { border-top: 0; }
 .norev { padding: 12px 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 .norev code { font-family: var(--mono); font-size: 12px; background: var(--code-bg);
   padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line-soft); }
@@ -269,6 +272,10 @@ function viewProblem(key) {
       '<span>' + n + '개 풀이</span>' +
       (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">문제 보기 ↗</a>' : '') +
     '</div></div>' +
+    (p.teamFeedback
+      ? '<details class="rev fb" open><summary>발표 후 팀 피드백</summary>' +
+        '<div class="rev-body">' + md(p.teamFeedback) + '</div></details>'
+      : '<div class="norev fb">팀 피드백 없음 · <code>reviews/' + p.key + '/team-feedback.md</code> 에 적으면 여기 표시됩니다</div>') +
     '<div class="tabs">' + p.entries.map((e, i) =>
       '<button data-i="' + i + '"' + (i === 0 ? ' class="on"' : '') + '>' + esc(e.authorName) +
       (e.variant ? ' (' + e.variant + ')' : '') + '</button>').join('') + '</div>' +

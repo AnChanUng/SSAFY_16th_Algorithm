@@ -45,7 +45,9 @@
         현재 미제출: junsoo 3 · chanung 6 · seongil 10 · seungjoo 10
 - [x] T3-3. 복습 큐: 한 바퀴(order 인원수)만큼 `done` 이 쌓이면 그 바퀴의 "그때 내 코드" 링크를 띄운다
       → 로직 완성. assignments 가 비어 있어 아직 표시될 게 없다
-- [ ] T3-4. 발표 후 팀 피드백 기록 위치 = `reviews/.../{problemId}/team-feedback.md`
+- [x] T3-4. 발표 후 팀 피드백 = `reviews/{platform}/{problemId}/team-feedback.md` (문제당 1개)
+      → 문제 상세 화면 상단에 렌더된다. 없으면 어디에 적으면 되는지 경로를 안내한다
+      → 개별 리뷰와 달리 프론트매터가 필요 없다. 그냥 마크다운으로 적으면 된다
 
 ### T4. 레퍼런스 비교 — 블로그·유튜브 모범 코드와 우리 코드 대조
 

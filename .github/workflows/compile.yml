@@ -1,0 +1,38 @@
+name: 컴파일 체크
+
+# 새로 올린 .java 가 컴파일되는지만 본다. AI 리뷰가 아니라 컴파일러다.
+# API 키도 Secret 도 필요 없고, public 저장소라 Actions 분도 무료다.
+on:
+  push:
+    branches: [main, chanung]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # 변경 파일을 계산하려면 비교 대상 커밋이 있어야 한다
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: 바뀐 Java 파일 컴파일
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="origin/${{ github.base_ref }}"
+          else
+            BASE="${{ github.event.before }}"
+          fi
+          node scripts/compile-changed.mjs "$BASE"

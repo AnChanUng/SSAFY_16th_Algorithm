@@ -1,0 +1,69 @@
+name: 사이트 배포
+
+# 배포는 main 에서만. 다른 브랜치에서는 빌드·검사만 돌려서 깨진 채로 머지되는 걸 막는다.
+on:
+  push:
+    branches: [main, chanung]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: 데이터 무결성 검사
+        run: node scripts/check.mjs
+
+      - name: 인덱스 생성
+        run: node scripts/scan.mjs
+
+      - name: 사이트 번들 생성
+        run: node scripts/build-site.mjs
+
+      - name: 렌더 스모크 테스트
+        run: node scripts/smoke-site.cjs
+
+      # 생성물이 커밋된 것과 다르면 누군가 데이터만 고치고 빌드를 안 돌린 것이다.
+      # 배포는 방금 만든 것으로 하므로 실패시키지 않고 알려만 준다.
+      - name: 커밋된 생성물이 최신인지 확인
+        run: |
+          if ! git diff --quiet -- site/data; then
+            echo "::warning::site/data 가 소스와 다릅니다. 로컬에서 'node scripts/build-site.mjs' 후 커밋하세요."
+            git diff --stat -- site/data
+          fi
+
+      - uses: actions/configure-pages@v6
+        if: github.ref == 'refs/heads/main'
+
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

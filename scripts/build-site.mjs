@@ -9,6 +9,7 @@ import path from 'node:path';
 import { ROOT, authors, walkRepo, resolveSource } from './lib/map.mjs';
 
 const tagDefs = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/review-tags.json'), 'utf8')).tags;
+const rotation = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/rotation.json'), 'utf8'));
 
 function readReview(rel) {
   const abs = path.join(ROOT, rel);
@@ -74,6 +75,7 @@ const data = {
   generatedAt: new Date().toISOString().slice(0, 10),
   authors: authors.map(({ id, displayName }) => ({ id, displayName })),
   tags: tagDefs,
+  rotation: { order: rotation.order, cadence: rotation.cadence, assignments: rotation.assignments },
   problems: list,
 };
 

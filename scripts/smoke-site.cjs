@@ -90,6 +90,19 @@ vm.runInContext('route()', sandbox);
 must(app.innerHTML.includes('반복 지적 패턴 Top 5'), '사람별: Top 5 섹션');
 for (const a of D.authors) must(app.innerHTML.includes(a.displayName), `사람별: ${a.displayName} 카드`);
 
+// 6. 로테이션 보드
+sandbox.location.hash = '#/rotation';
+vm.runInContext('route()', sandbox);
+const rot = app.innerHTML;
+must(rot.includes('미제출 현황'), '로테이션: 미제출 현황 섹션');
+must(rot.includes('복습 큐'), '로테이션: 복습 큐 섹션');
+must(rot.includes('담당자 미지정'), '로테이션: 담당자 미지정 섹션');
+must(rot.includes('data/rotation.json'), '로테이션: 담당 데이터 없을 때 안내');
+for (const a of D.authors) must(rot.includes(a.displayName), `로테이션: ${a.displayName} 카드`);
+// 미제출 계산이 실제 데이터와 맞는지
+const miss = D.authors.map(a => D.problems.filter(p => !p.entries.some(e => e.author === a.id)).length);
+must(miss.some(c => c > 0), '로테이션: 미제출 계산 동작 (' + miss.join(' / ') + ')');
+
 console.log(out.join('\n'));
 console.log(`\n통과 ${out.filter((l) => l.startsWith('OK')).length} / 실패 ${bad}`);
 process.exit(bad ? 1 : 0);

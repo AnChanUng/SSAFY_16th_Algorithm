@@ -66,6 +66,31 @@ const reviewTargets = solutions.map((s) => s.reviewTarget);
 const dupReview = reviewTargets.filter((t, i) => reviewTargets.indexOf(t) !== i);
 check(dupReview.length === 0, `리뷰 경로 충돌 0건${dupReview.length ? ` -> ${[...new Set(dupReview)].join(', ')}` : ''}`);
 
+// ---------- 2.5 로테이션 ----------
+const rot = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/rotation.json'), 'utf8'));
+const problemKeys = new Set(keys);
+const STATUS = new Set(['done', 'upcoming', 'skipped']);
+
+check(
+  rot.order.every((id) => authorIds.has(id)),
+  `rotation.order 가 모두 유효한 author (${rot.order.length}명)`
+);
+
+const asg = rot.assignments ?? [];
+for (const [i, a] of asg.entries()) {
+  const at = `rotation.assignments[${i}]`;
+  if (!problemKeys.has(a.problem)) fail.push(`${at}: 문제 '${a.problem}' 가 problems.json 에 없음`);
+  if (!authorIds.has(a.presenter)) fail.push(`${at}: 발표자 '${a.presenter}' 가 authors.json 에 없음`);
+  if (!STATUS.has(a.status)) fail.push(`${at}: status '${a.status}' 는 허용값 아님 (${[...STATUS].join('|')})`);
+  if (a.date && !/^\d{4}-\d{2}-\d{2}$/.test(a.date)) fail.push(`${at}: date '${a.date}' 형식은 YYYY-MM-DD`);
+}
+// 한 문제에 발표자가 둘이면 "문제당 담당 1명" 규칙이 깨진다
+const asgProblems = asg.map((a) => a.problem);
+const dupAsg = asgProblems.filter((k, i) => asgProblems.indexOf(k) !== i);
+check(dupAsg.length === 0, `문제당 담당자 1명${dupAsg.length ? ` -> 중복: ${[...new Set(dupAsg)].join(', ')}` : ''}`);
+check(true, `rotation.assignments ${asg.length}건 검사`);
+if (asg.length === 0) warn.push('rotation.assignments 가 비어 있음 — 팀이 발표 담당을 채워야 로테이션 보드가 완성됩니다');
+
 // ---------- 3. 리뷰 마크다운 ----------
 const reviewDir = path.join(ROOT, 'reviews');
 const reviewFiles = fs.existsSync(reviewDir)

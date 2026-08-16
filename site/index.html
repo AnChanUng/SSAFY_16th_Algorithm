@@ -139,7 +139,7 @@ details.rev[open] > summary::before { content: "▾"; }
 <body>
 <header><div class="head-in">
   <h1>알고리즘 스터디 <span id="sub"></span></h1>
-  <nav><a href="#/" id="nav-p">문제</a><a href="#/people" id="nav-w">사람별</a></nav>
+  <nav><a href="#/" id="nav-p">문제</a><a href="#/people" id="nav-w">사람별</a><a href="#/rotation" id="nav-r">로테이션</a></nav>
 </div></header>
 <div class="wrap" id="app"></div>
 
@@ -332,14 +332,91 @@ function viewPeople() {
       '</div>').join('') + '</div>';
 }
 
+
+/* ---------- 로테이션 보드 ---------- */
+function viewRotation() {
+  const R = D.rotation || { order: [], assignments: [] };
+  const asg = R.assignments || [];
+  const done = asg.filter(a => a.status === 'done');
+  const upcoming = asg.filter(a => a.status === 'upcoming')
+    .sort((a, b) => String(a.date || '9999').localeCompare(String(b.date || '9999')));
+  const titleOf = k => { const p = D.problems.find(x => x.key === k); return p ? p.title : k; };
+
+  // 한 바퀴 = order 길이만큼 발표가 끝난 묶음. 마지막으로 완성된 바퀴가 복습 대상이다.
+  const n = Math.max(1, R.order.length);
+  const cycles = [];
+  for (let i = 0; i + n <= done.length; i += n) cycles.push(done.slice(i, i + n));
+  const lastCycle = cycles.length ? cycles[cycles.length - 1] : null;
+
+  // 미제출 — assignments 없이도 계산된다 (풀이 파일 존재 여부)
+  const missing = D.authors.map(a => ({
+    a, list: D.problems.filter(p => !p.entries.some(e => e.author === a.id)),
+  }));
+
+  const assigned = new Set(asg.map(a => a.problem));
+  const unassigned = D.problems.filter(p => !assigned.has(p.key));
+
+  app.innerHTML =
+    (asg.length === 0
+      ? '<div class="note"><b>발표 담당 데이터가 아직 없습니다.</b> 누가 무엇을 발표했는지는 커밋 기록으로 알 수 없어서 ' +
+        '<code>data/rotation.json</code> 의 <code>assignments</code> 에 팀이 직접 채워야 합니다. ' +
+        '기억나는 것부터 한 줄씩 넣으면 됩니다 — 파일 맨 위에 형식이 적혀 있습니다.<br>' +
+        '아래 <b>미제출 현황</b>은 데이터 없이도 풀이 파일만 보고 계산하므로 지금 바로 쓸 수 있습니다.</div>'
+      : '') +
+
+    '<h2 style="font-size:17px;margin:0 0 10px">다음 발표</h2>' +
+    (upcoming.length
+      ? '<table><thead><tr><th>발표일</th><th>담당</th><th>문제</th></tr></thead><tbody>' +
+        upcoming.slice(0, 5).map(a =>
+          '<tr><td>' + esc(a.date || '미정') + '</td><td>' + esc(authorName(a.presenter)) + '</td>' +
+          '<td><a href="#/p/' + a.problem + '">' + esc(titleOf(a.problem)) + '</a></td></tr>').join('') +
+        '</tbody></table>'
+      : '<p class="empty">예정된 발표가 없습니다.</p>') +
+
+    '<h2 style="font-size:17px;margin:26px 0 10px">복습 큐' +
+      (lastCycle ? ' <span class="tag">' + cycles.length + '바퀴 완료</span>' : '') + '</h2>' +
+    (lastCycle
+      ? '<div class="note">한 바퀴가 끝났습니다. 그때 발표했던 <b>본인 코드</b>를 다시 열어볼 차례입니다.</div>' +
+        '<table><thead><tr><th>발표자</th><th>문제</th><th>그때 내 코드</th></tr></thead><tbody>' +
+        lastCycle.map(a => {
+          const pr = D.problems.find(x => x.key === a.problem);
+          const mine = pr && pr.entries.find(e => e.author === a.presenter);
+          return '<tr><td>' + esc(authorName(a.presenter)) + '</td>' +
+            '<td>' + esc(titleOf(a.problem)) + '</td>' +
+            '<td>' + (mine ? '<a href="#/p/' + a.problem + '">' + esc(mine.source) + '</a>'
+                           : '<span style="color:var(--muted)">풀이 없음</span>') + '</td></tr>';
+        }).join('') + '</tbody></table>'
+      : '<p class="empty">한 바퀴(' + n + '명)가 완료되면 여기에 복습 목록이 뜹니다.</p>') +
+
+    '<h2 style="font-size:17px;margin:26px 0 10px">미제출 현황</h2>' +
+    '<div class="cards">' + missing.map(m =>
+      '<div class="card"><h3>' + esc(m.a.displayName) + '</h3>' +
+      '<div class="stats"><div class="stat"><b>' + (D.problems.length - m.list.length) + '</b><span>제출</span></div>' +
+      '<div class="stat"><b>' + m.list.length + '</b><span>미제출</span></div></div>' +
+      (m.list.length
+        ? '<h4>안 낸 문제</h4>' + m.list.map(p =>
+            '<div class="trow"><a class="lbl" href="#/p/' + p.key + '">' + esc(p.title) + '</a>' +
+            '<span class="tag">' + p.platform + '</span></div>').join('')
+        : '<div class="empty">전부 제출했습니다.</div>') +
+      '</div>').join('') + '</div>' +
+
+    '<h2 style="font-size:17px;margin:26px 0 10px">담당자 미지정 ' +
+      '<span class="tag">' + unassigned.length + ' / ' + D.problems.length + '</span></h2>' +
+    (unassigned.length
+      ? '<p class="empty">' + unassigned.map(p =>
+          '<a href="#/p/' + p.key + '">' + esc(p.title) + '</a>').join(' · ') + '</p>'
+      : '<p class="empty">모든 문제에 담당자가 있습니다.</p>');
+}
+
 /* ---------- 라우팅 ---------- */
 function route() {
   const h = location.hash || '#/';
-  document.getElementById('nav-p').className = h.startsWith('#/people') ? '' : 'on';
-  document.getElementById('nav-w').className = h.startsWith('#/people') ? 'on' : '';
+  const mode = h.startsWith('#/people') ? 'w' : h.startsWith('#/rotation') ? 'r' : 'p';
+  for (const k of ['p', 'w', 'r']) document.getElementById('nav-' + k).className = k === mode ? 'on' : '';
   window.scrollTo(0, 0);
   if (h.startsWith('#/p/')) viewProblem(h.slice(4));
   else if (h.startsWith('#/people')) viewPeople();
+  else if (h.startsWith('#/rotation')) viewRotation();
   else viewList();
 }
 addEventListener('hashchange', route);

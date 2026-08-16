@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T07:49:03.445Z",
+  "generatedAt": "2026-08-16T08:11:55.050Z",
   "authors": [
     {
       "id": "junsoo",
@@ -1047,7 +1047,7 @@
           "source": "김준수/week1/SWEA1249.java",
           "target": "solutions/swea/1249/junsoo.java",
           "review": "reviews/swea/1249/junsoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 107,
           "bytes": 2868
         },
@@ -1059,7 +1059,7 @@
           "source": "안찬웅/week1/SWEA1249.java",
           "target": "solutions/swea/1249/chanung.java",
           "review": "reviews/swea/1249/chanung.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 73,
           "bytes": 2434
         },
@@ -1071,7 +1071,7 @@
           "source": "이성일/week1/SWEA1249.java",
           "target": "solutions/swea/1249/seongil.java",
           "review": "reviews/swea/1249/seongil.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 97,
           "bytes": 2535
         },
@@ -1083,7 +1083,7 @@
           "source": "이승주/1주차/SWEA1249.java",
           "target": "solutions/swea/1249/seungjoo.java",
           "review": "reviews/swea/1249/seungjoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 111,
           "bytes": 2397
         }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T02:47:16.154Z",
+  "generatedAt": "2026-08-17T02:53:20.962Z",
   "authors": [
     {
       "id": "junsoo",
@@ -165,7 +165,7 @@
           "source": "김준수/week2/디스크 컨트롤러.java",
           "target": "solutions/programmers/42627/junsoo.java",
           "review": "reviews/programmers/42627/junsoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 103,
           "bytes": 3023
         },
@@ -177,7 +177,7 @@
           "source": "안찬웅/week2/디스크 컨트롤러.java",
           "target": "solutions/programmers/42627/chanung.java",
           "review": "reviews/programmers/42627/chanung.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 62,
           "bytes": 2166
         },
@@ -189,7 +189,7 @@
           "source": "이성일/week2/디스크컨트롤러.java",
           "target": "solutions/programmers/42627/seongil.java",
           "review": "reviews/programmers/42627/seongil.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 50,
           "bytes": 1458
         },
@@ -201,7 +201,7 @@
           "source": "이승주/week2/우선순위 컨트롤러.java",
           "target": "solutions/programmers/42627/seungjoo.java",
           "review": "reviews/programmers/42627/seungjoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 33,
           "bytes": 1057
         }

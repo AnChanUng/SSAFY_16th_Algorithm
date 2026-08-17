@@ -79,15 +79,20 @@ totalMoney.put(enroll[i], totalMoney.get(referralName) + money - money / 10);  /
 ```java
 // person 이 money 를 벌었을 때의 분배
 static void distribute(String person, int money) {
-    int up = money / 10;                       // 추천인 몫 10%
-    if (up < 1 || parent.get(person).equals("-")) {
+    int up = money / 10;                                 // 추천인 몫 10%
+    if (up < 1) {                                        // 1원 미만이면 분배 없음
         totalMoney.merge(person, money, Integer::sum);   // 전액 본인
         return;
     }
     totalMoney.merge(person, money - up, Integer::sum);  // 90% 본인
-    distribute(parent.get(person), up);                  // 10%만 위로
+    // 추천인이 없으면 up 은 본사 몫이라 그냥 버린다 (본인이 갖는 게 아니다)
+    if (!parent.get(person).equals("-")) distribute(parent.get(person), up);
 }
 ```
+
+> **`up < 1` 과 `추천인이 "-"` 를 한 조건으로 묶으면 안 된다.**
+> 추천인이 없어도 10%는 본사가 가져가므로 본인은 90%만 갖는다. 두 경우의 본인 몫이 다르다.
+> (이 리뷰의 초안이 그렇게 묶었다가, 무작위 2만 건 대조에서 19,842건이 어긋나 바로잡았다.)
 
 ### 4. (중요) "10%가 1원 미만이면 분배 중단" 규칙이 빠졌다 — `logic-edge-case`
 

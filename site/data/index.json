@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T02:43:14.785Z",
+  "generatedAt": "2026-08-17T02:47:16.154Z",
   "authors": [
     {
       "id": "junsoo",
@@ -411,7 +411,7 @@
           "source": "김준수/week2/입국심사.java",
           "target": "solutions/programmers/43238/junsoo.java",
           "review": "reviews/programmers/43238/junsoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 65,
           "bytes": 2303
         },
@@ -423,7 +423,7 @@
           "source": "안찬웅/week2/입국심사.java",
           "target": "solutions/programmers/43238/chanung.java",
           "review": "reviews/programmers/43238/chanung.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 31,
           "bytes": 675
         },
@@ -435,7 +435,7 @@
           "source": "이성일/week2/입국심사.java",
           "target": "solutions/programmers/43238/seongil.java",
           "review": "reviews/programmers/43238/seongil.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 53,
           "bytes": 2156
         },
@@ -447,7 +447,7 @@
           "source": "이승주/week2/입국심사.java",
           "target": "solutions/programmers/43238/seungjoo.java",
           "review": "reviews/programmers/43238/seungjoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 36,
           "bytes": 740
         }

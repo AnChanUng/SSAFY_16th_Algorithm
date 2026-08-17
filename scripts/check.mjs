@@ -71,16 +71,30 @@ const rot = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/rotation.json'), 'u
 const problemKeys = new Set(keys);
 const STATUS = new Set(['done', 'upcoming', 'skipped']);
 
+const activeIds = new Set(authors.filter((a) => a.active !== false).map((a) => a.id));
+const alumni = authors.filter((a) => a.active === false);
+
 check(
   rot.order.every((id) => authorIds.has(id)),
   `rotation.order 가 모두 유효한 author (${rot.order.length}명)`
 );
+// 떠난 사람이 발표 순번에 남아 있으면 로테이션이 그 사람 차례에서 멈춘다
+check(
+  rot.order.every((id) => activeIds.has(id)),
+  `rotation.order 에 졸업생 없음${rot.order.filter((id) => !activeIds.has(id)).map((id) => ` -> ${id}`).join('')}`
+);
+if (alumni.length) {
+  ok.push(`졸업생 ${alumni.length}명 (${alumni.map((a) => `${a.displayName}/${a.leftAt ?? '날짜미상'}`).join(', ')}) — 코드·리뷰는 보존`);
+}
 
 const asg = rot.assignments ?? [];
 for (const [i, a] of asg.entries()) {
   const at = `rotation.assignments[${i}]`;
   if (!problemKeys.has(a.problem)) fail.push(`${at}: 문제 '${a.problem}' 가 problems.json 에 없음`);
   if (!authorIds.has(a.presenter)) fail.push(`${at}: 발표자 '${a.presenter}' 가 authors.json 에 없음`);
+  else if (!activeIds.has(a.presenter) && a.status === 'upcoming') {
+    fail.push(`${at}: 졸업생 '${a.presenter}' 에게 예정된 발표가 잡혀 있음`);
+  }
   if (!STATUS.has(a.status)) fail.push(`${at}: status '${a.status}' 는 허용값 아님 (${[...STATUS].join('|')})`);
   if (a.date && !/^\d{4}-\d{2}-\d{2}$/.test(a.date)) fail.push(`${at}: date '${a.date}' 형식은 YYYY-MM-DD`);
 }

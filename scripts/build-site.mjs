@@ -81,7 +81,7 @@ for (const p of list) {
 
 const data = {
   generatedAt: new Date().toISOString().slice(0, 10),
-  authors: authors.map(({ id, displayName }) => ({ id, displayName })),
+  authors: authors.map(({ id, displayName, active }) => ({ id, displayName, active: active !== false })),
   tags: tagDefs,
   rotation: { order: rotation.order, cadence: rotation.cadence, assignments: rotation.assignments },
   problems: list,

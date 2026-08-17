@@ -42,6 +42,7 @@ input, select { font: inherit; font-size: 14px; padding: 7px 11px; border: 1px s
 input[type=search] { min-width: 210px; }
 label.chk { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); cursor: pointer; }
 .count { margin-left: auto; color: var(--muted); font-size: 13px; }
+label.chk.alum { font-size: 13px; white-space: nowrap; }
 
 table { width: 100%; border-collapse: collapse; background: var(--panel);
   border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
@@ -143,6 +144,7 @@ details.rev.fb, .norev.fb { background: var(--panel); border: 1px solid var(--li
 <header><div class="head-in">
   <h1>알고리즘 스터디 <span id="sub"></span></h1>
   <nav><a href="#/" id="nav-p">문제</a><a href="#/people" id="nav-w">사람별</a><a href="#/rotation" id="nav-r">로테이션</a></nav>
+  <label class="chk alum"><input type="checkbox" id="f-alum"> 졸업생 포함</label>
 </div></header>
 <div class="wrap" id="app"></div>
 
@@ -153,6 +155,13 @@ const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const initial = n => n.length > 1 ? n.slice(1, 3) : n;
 const authorName = id => (D.authors.find(a => a.id === id) || {}).displayName || id;
+const isActive = id => ((D.authors.find(a => a.id === id) || {}).active !== false);
+
+// 스터디를 떠난 사람의 코드는 지우지 않고 기본 화면에서만 감춘다. 체크하면 다시 보인다.
+let showAlumni = false;
+const shownAuthors = () => D.authors.filter(a => a.active !== false || showAlumni);
+const shownEntries = p => p.entries.filter(e => isActive(e.author) || showAlumni);
+const activeCount = () => D.authors.filter(a => a.active !== false).length;
 const tagLabel = id => (D.tags.find(t => t.id === id) || {}).label || id;
 
 document.getElementById('sub').textContent =
@@ -203,14 +212,15 @@ function md(src) {
 }
 
 /* ---------- 문제 목록 ---------- */
-let filt = { platform: '', week: '', q: '', full: false };
+let filt = { platform: '', week: '', q: '', full: false, reviewed: false };
 
 function viewList() {
   const weeks = [...new Set(D.problems.flatMap(p => p.weeks))].sort((a, b) => a - b);
   const rows = D.problems.filter(p => {
     if (filt.platform && p.platform !== filt.platform) return false;
     if (filt.week && !p.weeks.includes(+filt.week)) return false;
-    if (filt.full && new Set(p.entries.map(e => e.author)).size < D.authors.length) return false;
+    if (filt.full && new Set(shownEntries(p).map(e => e.author)).size < shownAuthors().length) return false;
+    if (filt.reviewed && !shownEntries(p).some(e => e.review)) return false;
     if (filt.q && !(p.title + ' ' + p.problemId).toLowerCase().includes(filt.q.toLowerCase())) return false;
     return true;
   });
@@ -226,22 +236,24 @@ function viewList() {
         weeks.map(w => '<option value="' + w + '"' + (filt.week == w ? ' selected' : '') + '>' + w + '주차</option>').join('') +
       '</select>' +
       '<input type="search" id="f-q" placeholder="문제 제목 / 번호 검색" value="' + esc(filt.q) + '">' +
-      '<label class="chk"><input type="checkbox" id="f-full"' + (filt.full ? ' checked' : '') + '> 4명 다 푼 문제만</label>' +
+      '<label class="chk"><input type="checkbox" id="f-full"' + (filt.full ? ' checked' : '') + '> ' + shownAuthors().length + '명 다 푼 문제만</label>' +
+      '<label class="chk"><input type="checkbox" id="f-rev"' + (filt.reviewed ? ' checked' : '') + '> 리뷰 있는 문제만</label>' +
       '<span class="count">' + rows.length + ' / ' + D.problems.length + '문제</span>' +
     '</div>' +
     (rows.length ? '<table><thead><tr><th>문제</th><th>플랫폼</th><th>회차</th><th>푼 사람</th><th>리뷰</th></tr></thead><tbody>' +
       rows.map(p => {
-        const revN = p.entries.filter(e => e.review).length;
+        const shown = shownEntries(p);
+        const revN = shown.filter(e => e.review).length;
         return '<tr class="row" data-k="' + p.key + '">' +
           '<td><span class="ttl">' + esc(p.title) + '</span></td>' +
           '<td><span class="tag">' + p.platform + ' ' + p.problemId + '</span></td>' +
           '<td>' + (p.weeks.join(', ') || '—') + '주차</td>' +
-          '<td><div class="who">' + D.authors.map(a => {
-            const es = p.entries.filter(e => e.author === a.id);
+          '<td><div class="who">' + shownAuthors().map(a => {
+            const es = shown.filter(e => e.author === a.id);
             const cls = 'av' + (es.length ? ' has' : '') + (es.some(e => e.review) ? ' rev' : '');
             return '<div class="' + cls + '" title="' + a.displayName + '">' + esc(initial(a.displayName)) + '</div>';
           }).join('') + '</div></td>' +
-          '<td>' + (revN ? revN + '건' : '<span style="color:var(--muted)">—</span>') + '</td>' +
+          '<td>' + (revN ? revN + ' / ' + shown.length : '<span style="color:var(--muted)">—</span>') + '</td>' +
         '</tr>';
       }).join('') + '</tbody></table>'
       : '<p class="empty">조건에 맞는 문제가 없습니다.</p>');
@@ -252,6 +264,7 @@ function viewList() {
   bind('f-pf', 'change', e => { filt.platform = e.target.value; viewList(); });
   bind('f-wk', 'change', e => { filt.week = e.target.value; viewList(); });
   bind('f-full', 'change', e => { filt.full = e.target.checked; viewList(); });
+  bind('f-rev', 'change', e => { filt.reviewed = e.target.checked; viewList(); });
   bind('f-q', 'input', e => {
     filt.q = e.target.value; viewList();
     const el = document.getElementById('f-q'); el.focus(); el.setSelectionRange(el.value.length, el.value.length);
@@ -262,24 +275,26 @@ function viewList() {
 function viewProblem(key) {
   const p = D.problems.find(x => x.key === key);
   if (!p) { location.hash = '#/'; return; }
-  const n = p.entries.length;
+  const entries = shownEntries(p);
+  const n = entries.length;
+  const hidden = p.entries.length - n;
 
   app.innerHTML =
     '<a class="back" href="#/">← 문제 목록</a>' +
     '<div class="phead"><h2>' + esc(p.title) + '</h2><div class="meta">' +
       '<span class="tag">' + p.platform + ' ' + p.problemId + '</span>' +
       '<span>' + (p.weeks.join(', ') || '—') + '주차</span>' +
-      '<span>' + n + '개 풀이</span>' +
+      '<span>' + n + '개 풀이' + (hidden ? ' (졸업생 ' + hidden + '개 숨김)' : '') + '</span>' +
       (p.url ? '<a href="' + p.url + '" target="_blank" rel="noopener">문제 보기 ↗</a>' : '') +
     '</div></div>' +
     (p.teamFeedback
       ? '<details class="rev fb" open><summary>발표 후 팀 피드백</summary>' +
         '<div class="rev-body">' + md(p.teamFeedback) + '</div></details>'
       : '<div class="norev fb">팀 피드백 없음 · <code>reviews/' + p.key + '/team-feedback.md</code> 에 적으면 여기 표시됩니다</div>') +
-    '<div class="tabs">' + p.entries.map((e, i) =>
+    '<div class="tabs">' + entries.map((e, i) =>
       '<button data-i="' + i + '"' + (i === 0 ? ' class="on"' : '') + '>' + esc(e.authorName) +
       (e.variant ? ' (' + e.variant + ')' : '') + '</button>').join('') + '</div>' +
-    '<div class="cols ' + (n <= 2 ? 'n' + n : '') + ' tabbed">' + p.entries.map((e, i) => {
+    '<div class="cols ' + (n <= 2 ? 'n' + n : '') + ' tabbed">' + entries.map((e, i) => {
       const r = e.review;
       const verdict = r ? r.verdict : null;
       return '<div class="col' + (i === 0 ? ' on' : '') + '">' +
@@ -289,7 +304,7 @@ function viewProblem(key) {
           '<span class="sub">' + e.lines + '줄</span></h3>' +
         '<pre class="code">' + hl(e.code) + '</pre>' +
         (r
-          ? '<details class="rev"><summary>리뷰' +
+          ? '<details class="rev" open><summary>리뷰' +
               (r.tags && r.tags.length ? ' — ' + r.tags.map(t => esc(tagLabel(t))).join(', ') : '') +
             '</summary><div class="rev-body">' + md(r.body) + '</div></details>'
           : '<div class="norev">리뷰 없음 · <code>/review ' + esc(e.source) + '</code></div>') +
@@ -306,7 +321,7 @@ function viewProblem(key) {
 
 /* ---------- 사람별 ---------- */
 function viewPeople() {
-  const per = D.authors.map(a => {
+  const per = shownAuthors().map(a => {
     const es = D.problems.flatMap(p => p.entries.filter(e => e.author === a.id).map(e => ({ e, p })));
     const revs = es.filter(x => x.e.review).map(x => x.e.review);
     const tags = {};
@@ -323,7 +338,9 @@ function viewPeople() {
     '<div class="note"><b>반복 지적된 패턴 Top 5</b>는 리뷰의 고정 태그를 세서 만듭니다. ' +
     '리뷰가 쌓일수록 정확해집니다. (현재 ' + per.reduce((s, x) => s + x.revs.length, 0) + '건)</div>' +
     '<div class="cards">' + per.map(x =>
-      '<div class="card"><h3>' + esc(x.a.displayName) + '</h3><div class="id">' + x.a.id + '</div>' +
+      '<div class="card"><h3>' + esc(x.a.displayName) +
+      (x.a.active === false ? ' <span class="tag">졸업</span>' : '') +
+      '</h3><div class="id">' + x.a.id + '</div>' +
       '<div class="stats">' +
         '<div class="stat"><b>' + x.solved + '</b><span>문제</span></div>' +
         '<div class="stat"><b>' + x.total + '</b><span>풀이</span></div>' +
@@ -356,7 +373,8 @@ function viewRotation() {
   const lastCycle = cycles.length ? cycles[cycles.length - 1] : null;
 
   // 미제출 — assignments 없이도 계산된다 (풀이 파일 존재 여부)
-  const missing = D.authors.map(a => ({
+  // 떠난 사람은 앞으로 제출할 일이 없으므로 미제출 현황에서 제외한다 (졸업생 토글과 무관)
+  const missing = D.authors.filter(a => a.active !== false).map(a => ({
     a, list: D.problems.filter(p => !p.entries.some(e => e.author === a.id)),
   }));
 
@@ -427,6 +445,10 @@ function route() {
   else viewList();
 }
 addEventListener('hashchange', route);
+
+const alumBox = document.getElementById('f-alum');
+if (alumBox) alumBox.addEventListener('change', e => { showAlumni = e.target.checked; route(); });
+
 route();
 </script>
 </body>

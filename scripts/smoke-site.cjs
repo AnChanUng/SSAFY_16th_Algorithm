@@ -46,7 +46,8 @@ const must = (c, m) => { out.push((c ? 'OK   ' : 'FAIL ') + m); if (!c) bad++; }
 
 // 1. 목록 화면
 must(app.innerHTML.includes('베스트앨범'), '목록: 문제 제목 렌더');
-must(app.innerHTML.includes('4명 다 푼 문제만'), '목록: 필터 렌더');
+must(app.innerHTML.includes('다 푼 문제만'), '목록: 인원수 필터 렌더');
+must(app.innerHTML.includes('리뷰 있는 문제만'), '목록: 리뷰 필터 렌더');
 must((app.innerHTML.match(/class="row"/g) || []).length === D.problems.length, `목록: ${D.problems.length}행 렌더`);
 
 // 2. 문제 상세 (리뷰 있는 문제)
@@ -55,10 +56,12 @@ vm.runInContext('route()', sandbox);
 const detail = app.innerHTML;
 must(detail.includes('다단계 칫솔 판매'), '상세: 제목');
 // class="cols ..." (컨테이너) 와 구분하기 위해 닫는 따옴표까지 본다
-must((detail.match(/class="col( on)?"/g) || []).length === 4, '상세: 4열 렌더');
+const act = D.authors.filter(a => a.active !== false).length;
+must((detail.match(/class="col( on)?"/g) || []).length === act, `상세: 현역 ${act}열만 렌더`);
+must(detail.includes('졸업생 1개 숨김'), '상세: 숨긴 풀이 수 표시');
 must(detail.includes('<span class="k">class</span>'), '상세: Java 하이라이트 (keyword)');
 must(detail.includes('badge b-wrong'), '상세: verdict 배지');
-must((detail.match(/<details class="rev">/g) || []).length === 4, '상세: 리뷰 4건 모두 렌더');
+must((detail.match(/<details class="rev" open>/g) || []).length === act, '상세: 리뷰가 펼친 채로 렌더');
 must(!detail.includes('norev">리뷰 없음'), '상세: 다 리뷰됐으면 "리뷰 없음" 안 뜸');
 
 // "리뷰 없음" 안내는 실제로 리뷰가 빠진 문제에서 확인한다 (특정 문제에 고정하지 않는다)
@@ -98,7 +101,8 @@ must(!sandbox.hl('String s = "<script>";').includes('<script>'), 'hl: HTML 이�
 sandbox.location.hash = '#/people';
 vm.runInContext('route()', sandbox);
 must(app.innerHTML.includes('반복 지적 패턴 Top 5'), '사람별: Top 5 섹션');
-for (const a of D.authors) must(app.innerHTML.includes(a.displayName), `사람별: ${a.displayName} 카드`);
+for (const a of D.authors.filter(x => x.active !== false)) must(app.innerHTML.includes(a.displayName), `사람별: ${a.displayName} 카드`);
+must(!app.innerHTML.includes('이승주'), '사람별: 졸업생은 기본 숨김');
 
 // 6. 로테이션 보드
 sandbox.location.hash = '#/rotation';
@@ -108,10 +112,32 @@ must(rot.includes('미제출 현황'), '로테이션: 미제출 현황 섹션');
 must(rot.includes('복습 큐'), '로테이션: 복습 큐 섹션');
 must(rot.includes('담당자 미지정'), '로테이션: 담당자 미지정 섹션');
 must(rot.includes('data/rotation.json'), '로테이션: 담당 데이터 없을 때 안내');
-for (const a of D.authors) must(rot.includes(a.displayName), `로테이션: ${a.displayName} 카드`);
-// 미제출 계산이 실제 데이터와 맞는지
-const miss = D.authors.map(a => D.problems.filter(p => !p.entries.some(e => e.author === a.id)).length);
+for (const a of D.authors.filter(x => x.active !== false)) must(rot.includes(a.displayName), `로테이션: ${a.displayName} 카드`);
+must(!rot.includes('이승주'), '로테이션: 졸업생은 미제출 현황에서 제외');
+// 미제출 계산이 실제 데이터와 맞는지 (현역만)
+const miss = D.authors.filter(a => a.active !== false)
+  .map(a => D.problems.filter(p => !p.entries.some(e => e.author === a.id)).length);
 must(miss.some(c => c > 0), '로테이션: 미제출 계산 동작 (' + miss.join(' / ') + ')');
+
+// 7. 졸업생 토글 — 끄면 감추고 켜면 다시 보여야 한다 (데이터는 지워지지 않았다)
+const alumni = D.authors.filter(a => a.active === false);
+if (alumni.length) {
+  vm.runInContext('showAlumni = true;', sandbox);
+  sandbox.location.hash = '#/p/programmers/77486';
+  vm.runInContext('route()', sandbox);
+  const withAlum = app.innerHTML;
+  must((withAlum.match(/class="col( on)?"/g) || []).length === act + alumni.length, '토글: 켜면 졸업생 열도 렌더');
+  must(withAlum.includes(alumni[0].displayName), `토글: 켜면 ${alumni[0].displayName} 코드 보임`);
+  must(!withAlum.includes('숨김'), '토글: 켜면 숨김 안내 사라짐');
+
+  sandbox.location.hash = '#/people';
+  vm.runInContext('route()', sandbox);
+  must(app.innerHTML.includes('졸업'), '토글: 사람별에 졸업 배지');
+
+  vm.runInContext('showAlumni = false;', sandbox);  // 원복
+} else {
+  must(true, '토글: 졸업생 없음 — 검사 생략');
+}
 
 console.log(out.join('\n'));
 console.log(`\n통과 ${out.filter((l) => l.startsWith('OK')).length} / 실패 ${bad}`);

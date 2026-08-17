@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T08:11:55.050Z",
+  "generatedAt": "2026-08-17T02:43:14.785Z",
   "authors": [
     {
       "id": "junsoo",
@@ -803,7 +803,7 @@
           "source": "김준수/week2/다단계 칫솔 판매.java",
           "target": "solutions/programmers/77486/junsoo.java",
           "review": "reviews/programmers/77486/junsoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 92,
           "bytes": 3128
         },
@@ -827,7 +827,7 @@
           "source": "이성일/week2/다단계칫솔판매.java",
           "target": "solutions/programmers/77486/seongil.java",
           "review": "reviews/programmers/77486/seongil.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 51,
           "bytes": 1723
         },
@@ -839,7 +839,7 @@
           "source": "이승주/week2/다단계 칫솔 판매.java",
           "target": "solutions/programmers/77486/seungjoo.java",
           "review": "reviews/programmers/77486/seungjoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 64,
           "bytes": 1841
         }

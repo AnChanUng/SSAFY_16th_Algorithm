@@ -58,8 +58,18 @@ must(detail.includes('다단계 칫솔 판매'), '상세: 제목');
 must((detail.match(/class="col( on)?"/g) || []).length === 4, '상세: 4열 렌더');
 must(detail.includes('<span class="k">class</span>'), '상세: Java 하이라이트 (keyword)');
 must(detail.includes('badge b-wrong'), '상세: verdict 배지');
-must(detail.includes('<details class="rev">'), '상세: 리뷰 섹션');
-must(detail.includes('/review '), '상세: 리뷰 없는 열 안내');
+must((detail.match(/<details class="rev">/g) || []).length === 4, '상세: 리뷰 4건 모두 렌더');
+must(!detail.includes('norev">리뷰 없음'), '상세: 다 리뷰됐으면 "리뷰 없음" 안 뜸');
+
+// "리뷰 없음" 안내는 실제로 리뷰가 빠진 문제에서 확인한다 (특정 문제에 고정하지 않는다)
+const pending = D.problems.find(p => p.entries.some(e => !e.review));
+if (pending) {
+  sandbox.location.hash = '#/p/' + pending.key;
+  vm.runInContext('route()', sandbox);
+  must(app.innerHTML.includes('/review '), `상세: 리뷰 없는 열 안내 (${pending.key})`);
+} else {
+  must(true, '상세: 리뷰 없는 풀이가 없음 — 안내 검사 생략');
+}
 
 // 3. 마크다운 렌더 — 코드블록 자리표시자가 본문 숫자와 안 섞이는지
 const md = sandbox.md;

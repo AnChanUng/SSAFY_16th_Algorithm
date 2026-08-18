@@ -27,5 +27,8 @@ public class Test {
         }
         System.out.println(Arrays.toString(tsarr));
 
+        int[] arr = new int[]{1,2,3,4,5};
+        System.out.println(Arrays.toString(arr));
+
     }
 }

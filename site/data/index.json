@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T04:02:54.126Z",
+  "generatedAt": "2026-08-19T14:02:44.880Z",
   "authors": [
     {
       "id": "junsoo",
@@ -279,6 +279,18 @@
           "hasReview": false,
           "lines": 146,
           "bytes": 4711
+        },
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 3,
+          "variant": null,
+          "source": "이성일/week3/길찾기게임.java",
+          "target": "solutions/programmers/42892/seongil.java",
+          "review": "reviews/programmers/42892/seongil.md",
+          "hasReview": false,
+          "lines": 113,
+          "bytes": 3080
         }
       ]
     },
@@ -650,6 +662,56 @@
       ]
     },
     {
+      "key": "programmers/64064",
+      "platform": "programmers",
+      "problemId": "64064",
+      "title": "불량 사용자",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/64064",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 4,
+          "variant": null,
+          "source": "이성일/week4/불량사용자.java",
+          "target": "solutions/programmers/64064/seongil.java",
+          "review": "reviews/programmers/64064/seongil.md",
+          "hasReview": false,
+          "lines": 17,
+          "bytes": 744
+        }
+      ]
+    },
+    {
+      "key": "programmers/67258",
+      "platform": "programmers",
+      "problemId": "67258",
+      "title": "보석 쇼핑",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/67258",
+      "verified": true,
+      "weeks": [
+        4
+      ],
+      "entries": [
+        {
+          "author": "seongil",
+          "authorName": "이성일",
+          "week": 4,
+          "variant": "failed",
+          "source": "이성일/week4/보석쇼핑시간초과.java",
+          "target": "solutions/programmers/67258/seongil.failed.java",
+          "review": "reviews/programmers/67258/seongil.failed.md",
+          "hasReview": false,
+          "lines": 82,
+          "bytes": 3016
+        }
+      ]
+    },
+    {
       "key": "programmers/67259",
       "platform": "programmers",
       "problemId": "67259",
@@ -694,8 +756,8 @@
           "target": "solutions/programmers/67259/seongil.java",
           "review": "reviews/programmers/67259/seongil.md",
           "hasReview": false,
-          "lines": 75,
-          "bytes": 2304
+          "lines": 80,
+          "bytes": 2456
         },
         {
           "author": "seungjoo",
@@ -901,8 +963,8 @@
           "target": "solutions/programmers/81303/seongil.java",
           "review": "reviews/programmers/81303/seongil.md",
           "hasReview": false,
-          "lines": 60,
-          "bytes": 1505
+          "lines": 118,
+          "bytes": 3678
         }
       ]
     },

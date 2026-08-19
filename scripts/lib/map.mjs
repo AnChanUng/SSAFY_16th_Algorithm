@@ -13,13 +13,14 @@ const SKIP_DIRS = new Set([
 ]);
 
 // 결과물이 아닌 부산물
-const NON_SOLUTION = [/^Test$/i, /^ttt$/i];
+const NON_SOLUTION = [/^Test$/i, /^Testcode$/i, /^ttt$/i];
 
 // 같은 문제의 실패/연습 버전. 대표 풀이와 구분해서 variant로 붙인다.
 const VARIANT_RULES = [
   { re: /\s*실패\s*$/, tag: 'failed' },
   { re: /\s*잘못된\s*풀이\s*$/, tag: 'failed' },
   { re: /FailVersion$/i, tag: 'failed' },
+  { re: /\s*시간초과\s*$/, tag: 'failed' },
   { re: /(?<=[가-힣])2$/, tag: 'alt' },
 ];
 

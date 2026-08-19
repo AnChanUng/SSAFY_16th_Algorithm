@@ -102,6 +102,9 @@ details.rev[open] > summary::before { content: "▾"; }
 details.rev > summary .t-close, details.rev[open] > summary .t-open { display: none; }
 details.rev[open] > summary .t-close { display: inline; }
 .rev-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 14px 0 4px; }
+details.rev.alt > summary { color: var(--muted); border-color: var(--line); background: var(--bg); }
+details.rev.alt > summary:hover { background: var(--panel); }
+details.rev.alt .rev-meta:first-child { margin-top: 4px; }
 .rev-body { padding: 4px 2px 6px; font-size: 14px; }
 .rev-body h1 { display: none; }
 .rev-body h2 { font-size: 15px; margin: 20px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line-soft); }
@@ -278,6 +281,29 @@ function viewList() {
 }
 
 /* ---------- 문제 상세 (3열 비교) ---------- */
+/* 같은 사람의 이전/실패 버전. 대표 코드 아래에 접어서 붙인다. */
+function altBlock(a) {
+  const label = a.variant === 'failed' ? '실패 코드' : a.variant === 'alt' ? '대안 코드' : '이전 코드';
+  const r = a.review;
+  const file = a.source.split('/').pop();
+  return '<details class="rev alt"><summary><span class="t-open">' + label + ' 보기</span>' +
+      '<span class="t-close">' + label + ' 접기</span></summary>' +
+    '<div class="rev-body">' +
+      '<div class="rev-meta"><span class="tag">' + esc(file) + '</span>' +
+        '<span class="tag">' + a.lines + '줄</span>' +
+        (a.committedAt ? '<span class="tag">' + esc(a.committedAt) + '</span>' : '') +
+      '</div>' +
+      '<pre class="code">' + hl(a.code) + '</pre>' +
+      (r
+        ? '<div class="rev-meta">' +
+            (r.verdict ? '<span class="badge b-' + r.verdict + '">' + r.verdict + '</span>' : '') +
+            (r.compiles === 'false' ? '<span class="badge b-nc">compile ✗</span>' : '') +
+            (r.tags || []).map(t => '<span class="tag">' + esc(tagLabel(t)) + '</span>').join('') +
+          '</div>' + md(r.body)
+        : '<div class="norev">리뷰 없음 · <code>/review ' + esc(a.source) + '</code></div>') +
+    '</div></details>';
+}
+
 function viewProblem(key) {
   const p = D.problems.find(x => x.key === key);
   if (!p) { location.hash = '#/'; return; }
@@ -317,6 +343,7 @@ function viewProblem(key) {
               (r.tags || []).map(t => '<span class="tag">' + esc(tagLabel(t)) + '</span>').join('') +
             '</div>' + md(r.body) + '</div></details>'
           : '<div class="norev">리뷰 없음 · <code>/review ' + esc(e.source) + '</code></div>') +
+        (e.alts || []).map(a => altBlock(a)).join('') +
       '</div>';
     }).join('') + '</div>';
 

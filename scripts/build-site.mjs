@@ -5,6 +5,7 @@
 // file:// 로 열면 브라우저가 fetch 를 막는다. <script src> 는 막지 않으므로,
 // 번들을 전역 변수에 담아두면 GitHub Pages 에서도, 로컬에서 index.html 을 더블클릭해도 똑같이 돈다.
 import fs from 'node:fs';
+import { execSync } from 'node:child_process';
 import path from 'node:path';
 import { ROOT, authors, walkRepo, resolveSource } from './lib/map.mjs';
 
@@ -35,6 +36,27 @@ function readReview(rel) {
   return { meta, body: text.slice(m[0].length).trim() };
 }
 
+// 파일별 마지막 커밋 날짜. git 을 파일마다 부르면 느려서 한 번에 훑어 표를 만든다.
+// 한글 경로가 octal escape 로 나오지 않게 core.quotepath=false 가 반드시 필요하다.
+const commitDates = (() => {
+  const table = new Map();
+  try {
+    const out = execSync('git -c core.quotepath=false log --format=%x00%ad --date=short --name-only',
+      { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    let date = null;
+    for (const line of out.split('\n')) {
+      if (line.startsWith('\0')) { date = line.slice(1).trim(); continue; }
+      const file = line.trim();
+      if (!file || !date) continue;
+      if (!table.has(file)) table.set(file, date);   // 최신 커밋부터 나오므로 첫 등장이 마지막 수정일
+    }
+  } catch {
+    // git 이 없거나 저장소가 아니면 날짜 없이 동작한다 (변형 정렬만 파일명 순으로 떨어진다)
+  }
+  return table;
+})();
+const lastCommitDate = (src) => commitDates.get(src) || '';
+
 const solutions = walkRepo().map(resolveSource).filter((r) => r.ok);
 const problems = new Map();
 
@@ -58,7 +80,30 @@ for (const s of solutions) {
     lines: s.lines,
     code: fs.readFileSync(path.join(ROOT, s.source), 'utf8').replace(/\r\n/g, '\n').replace(/\s+$/, ''),
     review: review ? { ...review.meta, body: review.body } : null,
+    committedAt: lastCommitDate(s.source),
   });
+}
+
+// 같은 사람이 한 문제에 여러 파일을 올렸으면 **가장 최근에 올린 것**이 대표다.
+// 나머지(실패/대안 버전)는 대표에 alts 로 붙여서 사이트에서 버튼 뒤에 둔다.
+for (const p of problems.values()) {
+  const byAuthor = new Map();
+  for (const e of p.entries) {
+    if (!byAuthor.has(e.author)) byAuthor.set(e.author, []);
+    byAuthor.get(e.author).push(e);
+  }
+  const kept = [];
+  for (const group of byAuthor.values()) {
+    // 최근 커밋이 먼저. 날짜가 같으면 변형이 아닌 쪽(대표 이름)이 먼저.
+    group.sort((a, b) =>
+      (b.committedAt || '').localeCompare(a.committedAt || '') ||
+      (a.variant ? 1 : 0) - (b.variant ? 1 : 0) ||
+      a.source.localeCompare(b.source));
+    const [primary, ...alts] = group;
+    primary.alts = alts;
+    kept.push(primary);
+  }
+  p.entries = kept;
 }
 
 // T3-4. 발표 후 팀 피드백. 문제 단위이므로 개별 리뷰와 달리 문제당 한 개.

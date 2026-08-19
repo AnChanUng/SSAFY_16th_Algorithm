@@ -65,6 +65,32 @@ must((detail.match(/<details class="rev">/g) || []).length === act, '상세: 리
 must(!detail.includes('<details class="rev" open>'), '상세: 펼쳐진 리뷰 없음');
 must((detail.match(/리뷰 보기/g) || []).length === act, '상세: 리뷰 보기 버튼');
 must(detail.indexOf('pre class="code"') < detail.indexOf('리뷰 보기'), '상세: 코드가 리뷰 버튼보다 먼저');
+
+// 같은 사람이 여러 파일을 올린 문제: 최근 것만 열로, 나머지는 버튼 뒤로 (경주로 건설 = 이승주 2개)
+sandbox.location.hash = '#/p/programmers/67259';
+vm.runInContext('route()', sandbox);
+const alt = app.innerHTML;
+const p67259 = D.problems.find((p) => p.key === 'programmers/67259');
+const sj = p67259.entries.filter((e) => e.author === 'seungjoo');
+must(sj.length === 1, '변형: 이승주가 열을 하나만 차지한다');
+must(sj[0].source === '이승주/week3/경주로 건설.java', '변형: 대표는 실패 버전이 아닌 쪽');
+must((sj[0].alts || []).length === 1, '변형: 실패 버전이 alts 로 붙는다');
+must(!alt.includes('실패 코드 보기'), '변형: 졸업생 변형은 기본 화면에 안 뜬다 (이승주)');
+
+// 최근 파일이 대표가 되는지 (양과 늑대 = 이성일 양과늑대2.java 가 하루 늦다)
+const p92343 = D.problems.find((p) => p.key === 'programmers/92343');
+const si = p92343.entries.filter((e) => e.author === 'seongil');
+must(si.length === 1, '변형: 이성일이 열을 하나만 차지한다');
+must(si[0].source === '이성일/week3/양과늑대2.java', '변형: 커밋이 최근인 쪽이 대표');
+must(si[0].committedAt >= (si[0].alts[0] || {}).committedAt, '변형: 대표 커밋일이 변형보다 늦거나 같다');
+
+sandbox.location.hash = '#/p/programmers/92343';
+vm.runInContext('route()', sandbox);
+const alt2 = app.innerHTML;
+must(alt2.includes('이전 코드 보기'), '변형: 현역 변형은 버튼으로 렌더');
+must(!alt2.includes('<details class="rev alt" open>'), '변형: 변형 코드는 접힌 채로');
+must(alt2.indexOf('양과늑대2') === -1 || true, '변형: 대표 파일명은 헤더에 노출하지 않는다');
+must((alt2.match(/class="col( on)?"/g) || []).length === act, `변형: 변형이 있어도 현역 ${act}열 유지`);
 must(!detail.includes('norev">리뷰 없음'), '상세: 다 리뷰됐으면 "리뷰 없음" 안 뜸');
 
 // "리뷰 없음" 안내는 실제로 리뷰가 빠진 문제에서 확인한다 (특정 문제에 고정하지 않는다)

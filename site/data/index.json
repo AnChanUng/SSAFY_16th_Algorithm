@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T14:05:09.357Z",
+  "generatedAt": "2026-08-19T14:24:46.141Z",
   "authors": [
     {
       "id": "junsoo",
@@ -313,7 +313,7 @@
           "source": "김준수/week3/N으로 표현.java",
           "target": "solutions/programmers/42895/junsoo.java",
           "review": "reviews/programmers/42895/junsoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 74,
           "bytes": 3020
         },
@@ -325,7 +325,7 @@
           "source": "안찬웅/week3/N으로 표현.java",
           "target": "solutions/programmers/42895/chanung.java",
           "review": "reviews/programmers/42895/chanung.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 42,
           "bytes": 1188
         },
@@ -337,7 +337,7 @@
           "source": "이성일/week3/N으로표현.java",
           "target": "solutions/programmers/42895/seongil.java",
           "review": "reviews/programmers/42895/seongil.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 55,
           "bytes": 1467
         },
@@ -349,7 +349,7 @@
           "source": "이성일/week3/N으로표현FailVersion.java",
           "target": "solutions/programmers/42895/seongil.failed.java",
           "review": "reviews/programmers/42895/seongil.failed.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 79,
           "bytes": 2650
         },
@@ -361,7 +361,7 @@
           "source": "이승주/week3/N으로 표현.java",
           "target": "solutions/programmers/42895/seungjoo.java",
           "review": "reviews/programmers/42895/seungjoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 46,
           "bytes": 888
         }

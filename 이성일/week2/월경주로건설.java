@@ -5,7 +5,7 @@ class Solution {
     
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
-    static int[][] costs;
+    static int[][][] costs;
 
     static class Road {
         int r;
@@ -27,17 +27,22 @@ class Solution {
         int answer = Integer.MAX_VALUE;
 
         int size = board.length;
-        costs = new int[size][size];
-        for (int[] cost: costs) {
-            Arrays.fill(cost,Integer.MAX_VALUE);
+        costs = new int[4][size][size];
+        for (int[][] cost : costs) {
+            for (int[] c: cost) Arrays.fill(c,Integer.MAX_VALUE);
         }
         
         ArrayDeque<Road> deq = new ArrayDeque<>();
-
+        for (int i = 0; i < 2; i++) {
+            
+        }
         Road start = new Road(0, 0, 0);
-  
+        
         start.cost = 0;
-        costs[0][0] = start.cost;
+
+        for (int i = 0; i < 4; i++) {
+            costs[i][0][0] = start.cost;
+        }
         deq.add(start);
         
         while (!deq.isEmpty()) {

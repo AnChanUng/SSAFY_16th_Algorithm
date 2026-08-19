@@ -61,7 +61,10 @@ must((detail.match(/class="col( on)?"/g) || []).length === act, `상세: 현역 
 must(detail.includes('졸업생 1개 숨김'), '상세: 숨긴 풀이 수 표시');
 must(detail.includes('<span class="k">class</span>'), '상세: Java 하이라이트 (keyword)');
 must(detail.includes('badge b-wrong'), '상세: verdict 배지');
-must((detail.match(/<details class="rev" open>/g) || []).length === act, '상세: 리뷰가 펼친 채로 렌더');
+must((detail.match(/<details class="rev">/g) || []).length === act, '상세: 리뷰가 접힌 채로 렌더');
+must(!detail.includes('<details class="rev" open>'), '상세: 펼쳐진 리뷰 없음');
+must((detail.match(/리뷰 보기/g) || []).length === act, '상세: 리뷰 보기 버튼');
+must(detail.indexOf('pre class="code"') < detail.indexOf('리뷰 보기'), '상세: 코드가 리뷰 버튼보다 먼저');
 must(!detail.includes('norev">리뷰 없음'), '상세: 다 리뷰됐으면 "리뷰 없음" 안 뜸');
 
 // "리뷰 없음" 안내는 실제로 리뷰가 빠진 문제에서 확인한다 (특정 문제에 고정하지 않는다)

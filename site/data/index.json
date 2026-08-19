@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T14:24:46.141Z",
+  "generatedAt": "2026-08-19T14:37:55.429Z",
   "authors": [
     {
       "id": "junsoo",
@@ -731,7 +731,7 @@
           "source": "김준수/week3/경주로 건설.java",
           "target": "solutions/programmers/67259/junsoo.java",
           "review": "reviews/programmers/67259/junsoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 103,
           "bytes": 3482
         },
@@ -743,7 +743,7 @@
           "source": "안찬웅/week3/경주로 건설.java",
           "target": "solutions/programmers/67259/chanung.java",
           "review": "reviews/programmers/67259/chanung.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 84,
           "bytes": 2444
         },
@@ -755,7 +755,7 @@
           "source": "이성일/week2/월경주로건설.java",
           "target": "solutions/programmers/67259/seongil.java",
           "review": "reviews/programmers/67259/seongil.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 80,
           "bytes": 2456
         },
@@ -767,7 +767,7 @@
           "source": "이승주/week3/경주로 건설 잘못된 풀이.java",
           "target": "solutions/programmers/67259/seungjoo.failed.java",
           "review": "reviews/programmers/67259/seungjoo.failed.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 65,
           "bytes": 2245
         },
@@ -779,7 +779,7 @@
           "source": "이승주/week3/경주로 건설.java",
           "target": "solutions/programmers/67259/seungjoo.java",
           "review": "reviews/programmers/67259/seungjoo.md",
-          "hasReview": false,
+          "hasReview": true,
           "lines": 65,
           "bytes": 1855
         }

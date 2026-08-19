@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T14:37:55.429Z",
+  "generatedAt": "2026-08-19T14:38:06.642Z",
   "authors": [
     {
       "id": "junsoo",
@@ -681,8 +681,8 @@
           "target": "solutions/programmers/64064/seongil.java",
           "review": "reviews/programmers/64064/seongil.md",
           "hasReview": false,
-          "lines": 17,
-          "bytes": 744
+          "lines": 89,
+          "bytes": 2853
         }
       ]
     },
